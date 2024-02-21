@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ranked</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="05_clean-rankdata_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05_clean-rankdata_files/libs/quarto-html/quarto.js"></script>
+<script src="05_clean-rankdata_files/libs/quarto-html/popper.min.js"></script>
+<script src="05_clean-rankdata_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="05_clean-rankdata_files/libs/quarto-html/anchor.min.js"></script>
+<link href="05_clean-rankdata_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05_clean-rankdata_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="05_clean-rankdata_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="05_clean-rankdata_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="05_clean-rankdata_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="05_clean-rankdata_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="05_clean-rankdata_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ranked</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview-of-our-data-processing-workflow-for-strategy-ranking" class="level1">
+<h1>Overview of our data processing workflow for strategy ranking</h1>
+<p>This report presents an overview of our data processing workflow for the strategy ranking data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in libraries for data manipulation</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readxl' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
+</div>
+</div>
+<p>The data was downloaded as .xlsx files and stored in the /data/data_ranking/ folder. Within this directory, there are two primary files: one for the skiers and another for the coaches.</p>
+</section>
+<section id="skiers-rank-data" class="level1">
+<h1>Skiers rank data</h1>
+<p>The initial step is to load the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../../data/data_ranking/d_skierrank.xlsx"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 530 × 6
+   Starttidspunkt      Fullføringstidspunkt skier rank     treatment skigroup
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     d;a;c;b; slfc      a       
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     d;c;b;a; slfc      a       
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     d;c;b;a; slfc      a       
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     d;b;c;a; slfc      a       
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     d;b;c;a; slfc      a       
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     d;b;c;a; slfc      a       
+ 7 2023-06-02 18:01:46 2023-06-02 18:02:10  2     d;c;a;b; slfc      a       
+ 8 2023-06-02 19:41:49 2023-06-02 19:42:28  2     d;c;b;a; slfc      a       
+ 9 2023-06-03 14:37:28 2023-06-03 14:38:03  2     d;b;c;a; slfc      a       
+10 2023-06-04 11:13:21 2023-06-04 11:13:39  2     b;d;c;a; slfc      a       
+# ℹ 520 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;a;c;b;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;c;b;a;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;c;b;a;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Then we remove the “;” from the ranking column so that we can better read the index value of the character</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>d_skier<span class="sc">$</span>rank <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(d_skier<span class="sc">$</span>rank, <span class="st">";"</span>, <span class="st">""</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 530 × 6
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a       
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a       
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a       
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a       
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a       
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a       
+ 7 2023-06-02 18:01:46 2023-06-02 18:02:10  2     dcab  slfc      a       
+ 8 2023-06-02 19:41:49 2023-06-02 19:42:28  2     dcba  slfc      a       
+ 9 2023-06-03 14:37:28 2023-06-03 14:38:03  2     dbca  slfc      a       
+10 2023-06-04 11:13:21 2023-06-04 11:13:39  2     bdca  slfc      a       
+# ℹ 520 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dacb</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>“Next, create a new column for each strategy and assign it an integer value corresponding to its ranking. Here, 1 is best. We can check if the rank is computed correctly by comparing the value to the rank column. This looks good</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">a =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"a"</span>, rank)))   </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">b =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"b"</span>, rank))) </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">c =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"c"</span>, rank)))   </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">d =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"d"</span>, rank))) <span class="co">#</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 530 × 10
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup     a
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;int&gt;
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a            2
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a            4
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a            4
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a            4
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a            4
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a            4
+ 7 2023-06-02 18:01:46 2023-06-02 18:02:10  2     dcab  slfc      a            3
+ 8 2023-06-02 19:41:49 2023-06-02 19:42:28  2     dcba  slfc      a            4
+ 9 2023-06-03 14:37:28 2023-06-03 14:38:03  2     dbca  slfc      a            4
+10 2023-06-04 11:13:21 2023-06-04 11:13:39  2     bdca  slfc      a            4
+# ℹ 520 more rows
+# ℹ 3 more variables: b &lt;int&gt;, c &lt;int&gt;, d &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">a</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dacb</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>We encountered some missing data, such as instances where skiers forgot to rank the strategy. To address this, we need to add these trials to the dataset to ensure accurate ranking estimation. To do this, we first create a row number index for each skier in the data using the following code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> d_skier <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>d_skier </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 530 × 11
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup     a
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;int&gt;
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a            2
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a            4
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a            4
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a            4
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a            4
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a            4
+ 7 2023-06-02 18:01:46 2023-06-02 18:02:10  2     dcab  slfc      a            3
+ 8 2023-06-02 19:41:49 2023-06-02 19:42:28  2     dcba  slfc      a            4
+ 9 2023-06-03 14:37:28 2023-06-03 14:38:03  2     dbca  slfc      a            4
+10 2023-06-04 11:13:21 2023-06-04 11:13:39  2     bdca  slfc      a            4
+# ℹ 520 more rows
+# ℹ 4 more variables: b &lt;int&gt;, c &lt;int&gt;, d &lt;int&gt;, time &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">a</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">d</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dacb</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Now that we have an index number for each skier in the dataset, we proceed to load the missing data for each skier</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>d_skierrank_lostdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../../data/data_ranking/d_skierrank_lostdata.xlsx"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>d_skierrank_lostdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 57 × 11
+   Starttidspunkt Fullføringstidspunkt skier  time rank  treatment skigroup
+   &lt;lgl&gt;          &lt;lgl&gt;                &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   
+ 1 NA             NA                       2   2.5 &lt;NA&gt;  slfc      a       
+ 2 NA             NA                      23   0.5 &lt;NA&gt;  slfc      a       
+ 3 NA             NA                       5   3.5 &lt;NA&gt;  slfc      a       
+ 4 NA             NA                       1   2.5 &lt;NA&gt;  slts      b       
+ 5 NA             NA                      13   2.5 &lt;NA&gt;  slts      b       
+ 6 NA             NA                      13   3.5 &lt;NA&gt;  slts      b       
+ 7 NA             NA                       2   0.5 &lt;NA&gt;  rl        b       
+ 8 NA             NA                       2   1.5 &lt;NA&gt;  rl        b       
+ 9 NA             NA                      21   2.5 &lt;NA&gt;  slfc      b       
+10 NA             NA                      21   3.5 &lt;NA&gt;  slfc      b       
+# ℹ 47 more rows
+# ℹ 4 more variables: a &lt;dbl&gt;, b &lt;dbl&gt;, c &lt;dbl&gt;, d &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>We can bind the two dataframes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">rbind</span>(d_skier, d_skierrank_lostdata)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 587 × 11
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup     a
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a            2
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a            4
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a            4
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a            4
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a            4
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a            4
+ 7 2023-06-02 18:01:46 2023-06-02 18:02:10  2     dcab  slfc      a            3
+ 8 2023-06-02 19:41:49 2023-06-02 19:42:28  2     dcba  slfc      a            4
+ 9 2023-06-03 14:37:28 2023-06-03 14:38:03  2     dbca  slfc      a            4
+10 2023-06-04 11:13:21 2023-06-04 11:13:39  2     bdca  slfc      a            4
+# ℹ 577 more rows
+# ℹ 4 more variables: b &lt;dbl&gt;, c &lt;dbl&gt;, d &lt;dbl&gt;, time &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">a</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">d</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dacb</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Finally, we create a column with the updated index number</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> d_skier <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(skigroup, skier, time) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ranktime =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_skier) <span class="sc">|&gt;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Starttidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Fullføringstidspunkt</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">treatment</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">a</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">d</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">time</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ranktime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:00:40</td>
+<td style="text-align: left;">2023-06-02 18:01:14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dacb</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:43:50</td>
+<td style="text-align: left;">2023-06-02 19:44:06</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:39:37</td>
+<td style="text-align: left;">2023-06-03 11:39:55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dcba</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 14:35:53</td>
+<td style="text-align: left;">2023-06-03 14:36:19</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-04 11:07:02</td>
+<td style="text-align: left;">2023-06-04 11:07:15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-04 13:27:59</td>
+<td style="text-align: left;">2023-06-04 13:28:16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">slfc</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>We check if we have all the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'skigroup'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skier</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">51</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">53</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">55</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">56</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">66</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">226</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">d</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Next, we exclude some skiers that were injuried or sick. Bib 66 and 226 was not part of the experiment</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>d_skier </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 587 × 12
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup     a
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a            2
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a            4
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a            4
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a            4
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a            4
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a            4
+ 7 2023-06-02 16:31:58 2023-06-02 16:32:33  10    dacb  rl        a            2
+ 8 2023-06-02 19:41:17 2023-06-02 19:41:51  10    dcba  rl        a            4
+ 9 2023-06-03 13:14:41 2023-06-03 13:15:04  10    dbca  rl        a            4
+10 2023-06-03 16:07:39 2023-06-03 16:07:51  10    dcba  rl        a            4
+# ℹ 577 more rows
+# ℹ 5 more variables: b &lt;dbl&gt;, c &lt;dbl&gt;, d &lt;dbl&gt;, time &lt;dbl&gt;, ranktime &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">filter</span>(d_skier, <span class="sc">!</span>(skier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"50"</span>, <span class="st">"18"</span>, <span class="st">"20"</span>) <span class="sc">&amp;</span> skigroup <span class="sc">==</span> <span class="st">"b"</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">filter</span>(d_skier, <span class="sc">!</span>(skier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"66"</span>, <span class="st">"226"</span>)))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 576 × 12
+   Starttidspunkt      Fullføringstidspunkt skier rank  treatment skigroup     a
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+ 1 2023-06-02 18:00:40 2023-06-02 18:01:14  1     dacb  slfc      a            2
+ 2 2023-06-02 19:43:50 2023-06-02 19:44:06  1     dcba  slfc      a            4
+ 3 2023-06-03 11:39:37 2023-06-03 11:39:55  1     dcba  slfc      a            4
+ 4 2023-06-03 14:35:53 2023-06-03 14:36:19  1     dbca  slfc      a            4
+ 5 2023-06-04 11:07:02 2023-06-04 11:07:15  1     dbca  slfc      a            4
+ 6 2023-06-04 13:27:59 2023-06-04 13:28:16  1     dbca  slfc      a            4
+ 7 2023-06-02 16:31:58 2023-06-02 16:32:33  10    dacb  rl        a            2
+ 8 2023-06-02 19:41:17 2023-06-02 19:41:51  10    dcba  rl        a            4
+ 9 2023-06-03 13:14:41 2023-06-03 13:15:04  10    dbca  rl        a            4
+10 2023-06-03 16:07:39 2023-06-03 16:07:51  10    dcba  rl        a            4
+# ℹ 566 more rows
+# ℹ 5 more variables: b &lt;dbl&gt;, c &lt;dbl&gt;, d &lt;dbl&gt;, time &lt;dbl&gt;, ranktime &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>We do a final check. This looks good.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(skigroup, skier) <span class="sc">|&gt;</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'skigroup'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 96 × 3
+   skigroup skier     n
+   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
+ 1 a        1         6
+ 2 a        10        6
+ 3 a        12        6
+ 4 a        13        6
+ 5 a        2         6
+ 6 a        20        6
+ 7 a        21        6
+ 8 a        22        6
+ 9 a        23        6
+10 a        24        6
+# ℹ 86 more rows</code></pre>
+</div>
+</div>
+<p>Here, we make the ranking into a long format. We do this with the pivot_longer function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d_skier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Starttidspunkt"       "Fullføringstidspunkt" "skier"               
+ [4] "rank"                 "treatment"            "skigroup"            
+ [7] "a"                    "b"                    "c"                   
+[10] "d"                    "time"                 "ranktime"            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> d_skier <span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">Starttidspunkt</span><span class="st">`</span>, <span class="st">`</span><span class="at">Fullf&lt;U+00F8&gt;ringstidspunkt</span><span class="st">`</span>, <span class="st">`</span><span class="at">time</span><span class="st">`</span>))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(d_skier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [576 × 9] (S3: tbl_df/tbl/data.frame)
+ $ skier    : chr [1:576] "1" "1" "1" "1" ...
+ $ rank     : chr [1:576] "dacb" "dcba" "dcba" "dbca" ...
+ $ treatment: chr [1:576] "slfc" "slfc" "slfc" "slfc" ...
+ $ skigroup : chr [1:576] "a" "a" "a" "a" ...
+ $ a        : num [1:576] 2 4 4 4 4 4 2 4 4 4 ...
+ $ b        : num [1:576] 4 3 3 2 2 2 4 3 2 3 ...
+ $ c        : num [1:576] 3 2 2 3 3 3 3 2 3 2 ...
+ $ d        : num [1:576] 1 1 1 1 1 1 1 1 1 1 ...
+ $ ranktime : int [1:576] 1 2 3 4 5 6 1 2 3 4 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> d_skier <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(a,b,c,d), <span class="at">names_to =</span> <span class="st">"strategy"</span>) </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,304 × 7
+   skier rank  treatment skigroup ranktime strategy value
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1 1     dacb  slfc      a               1 a            2
+ 2 1     dacb  slfc      a               1 b            4
+ 3 1     dacb  slfc      a               1 c            3
+ 4 1     dacb  slfc      a               1 d            1
+ 5 1     dcba  slfc      a               2 a            4
+ 6 1     dcba  slfc      a               2 b            3
+ 7 1     dcba  slfc      a               2 c            2
+ 8 1     dcba  slfc      a               2 d            1
+ 9 1     dcba  slfc      a               3 a            4
+10 1     dcba  slfc      a               3 b            3
+# ℹ 2,294 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">ranktime =</span> <span class="fu">as.factor</span>(ranktime), <span class="at">strategy =</span> <span class="fu">as.factor</span>(strategy))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,304 × 7
+   skier rank  treatment skigroup ranktime strategy value
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;    &lt;dbl&gt;
+ 1 1     dacb  slfc      a        1        a            2
+ 2 1     dacb  slfc      a        1        b            4
+ 3 1     dacb  slfc      a        1        c            3
+ 4 1     dacb  slfc      a        1        d            1
+ 5 1     dcba  slfc      a        2        a            4
+ 6 1     dcba  slfc      a        2        b            3
+ 7 1     dcba  slfc      a        2        c            2
+ 8 1     dcba  slfc      a        2        d            1
+ 9 1     dcba  slfc      a        3        a            4
+10 1     dcba  slfc      a        3        b            3
+# ℹ 2,294 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(d_skier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [2,304 × 7] (S3: tbl_df/tbl/data.frame)
+ $ skier    : chr [1:2304] "1" "1" "1" "1" ...
+ $ rank     : chr [1:2304] "dacb" "dacb" "dacb" "dacb" ...
+ $ treatment: chr [1:2304] "slfc" "slfc" "slfc" "slfc" ...
+ $ skigroup : chr [1:2304] "a" "a" "a" "a" ...
+ $ ranktime : Factor w/ 6 levels "1","2","3","4",..: 1 1 1 1 2 2 2 2 3 3 ...
+ $ strategy : Factor w/ 4 levels "a","b","c","d": 1 2 3 4 1 2 3 4 1 2 ...
+ $ value    : num [1:2304] 2 4 3 1 4 3 2 1 4 3 ...</code></pre>
+</div>
+</div>
+<p>Here, we create a new column choicemaker and assign it the value “skier” so that we understand that this were the ranking from the skiers and not the coach.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_skier, <span class="at">choicemaker =</span> <span class="st">"skier"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,304 × 8
+   skier rank  treatment skigroup ranktime strategy value choicemaker
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;    &lt;dbl&gt; &lt;chr&gt;      
+ 1 1     dacb  slfc      a        1        a            2 skier      
+ 2 1     dacb  slfc      a        1        b            4 skier      
+ 3 1     dacb  slfc      a        1        c            3 skier      
+ 4 1     dacb  slfc      a        1        d            1 skier      
+ 5 1     dcba  slfc      a        2        a            4 skier      
+ 6 1     dcba  slfc      a        2        b            3 skier      
+ 7 1     dcba  slfc      a        2        c            2 skier      
+ 8 1     dcba  slfc      a        2        d            1 skier      
+ 9 1     dcba  slfc      a        3        a            4 skier      
+10 1     dcba  slfc      a        3        b            3 skier      
+# ℹ 2,294 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="coach-rank-data" class="level1">
+<h1>Coach rank data</h1>
+<p>Here we load in the ranking from the coach</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "01_clean-data.html"                   
+ [2] "01_clean-data.qmd"                    
+ [3] "02_analysis_racingtime.html"          
+ [4] "02_analysis_racingtime.qmd"           
+ [5] "03_analysis_choices.qmd"              
+ [6] "04_analysis_win-stay_loose-switch.qmd"
+ [7] "05_analysis_ranking.qmd"              
+ [8] "05_clean-rankdata.qmd"                
+ [9] "05_clean-rankdata.rmarkdown"          
+[10] "06_analysis_rankeddata.qmd"           
+[11] "test.svg"                             
+[12] "test.svg.2023_11_29_14_43_39.1.svg"   
+[13] "test1.svg"                            
+[14] "test2.svg"                            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../../data/data_ranking/d_coachrank.xlsx"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>d_coach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 32 × 5
+   completed           coach rank     skigroup time 
+   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;
+ 1 2023-06-02 18:01:28 a     a;d;c;b; a        rank1
+ 2 2023-06-02 18:06:27 b     d;b;c;a; a        rank1
+ 3 2023-06-02 19:35:09 b     d;b;c;a; a        rank2
+ 4 2023-06-02 19:35:48 a     a;c;d;b; a        rank2
+ 5 2023-06-03 11:43:06 b     d;b;c;a; a        rank3
+ 6 2023-06-03 11:44:18 a     d;c;a;b; a        rank3
+ 7 2023-06-03 14:35:35 a     b;d;c;a; a        rank4
+ 8 2023-06-03 14:36:56 b     b;d;a;c; a        rank4
+ 9 2023-06-05 16:43:01 a     d;b;c;a; b        rank1
+10 2023-06-05 16:43:07 b     b;d;c;a; b        rank1
+# ℹ 22 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_coach) <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">completed</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">coach</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:01:28</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">a;d;c;b;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 18:06:27</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 19:35:09</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:35:48</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">a;c;d;b;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:43:06</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">d;b;c;a;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 11:44:18</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">d;c;a;b;</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Then we remove the “;” from the ranking so that we can better read the index value of the character</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>d_coach<span class="sc">$</span>rank <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(d_coach<span class="sc">$</span>rank, <span class="st">";"</span>, <span class="st">""</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_coach) <span class="sc">|&gt;</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">completed</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">coach</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:01:28</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">adcb</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 18:06:27</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 19:35:09</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:35:48</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">acdb</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:43:06</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 11:44:18</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">dcab</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Next, create a new column for each strategy and assign it an integer value corresponding to its ranking. Here, 4 is best.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_coach, <span class="at">a =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"a"</span>, rank)))   </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_coach, <span class="at">b =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"b"</span>, rank))) </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_coach, <span class="at">c =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"c"</span>, rank)))   </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_coach, <span class="at">d =</span> <span class="fu">as.integer</span>(<span class="fu">gregexpr</span>(<span class="st">"d"</span>, rank))) </span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d_coach) <span class="sc">|&gt;</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">completed</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">coach</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">skigroup</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">time</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">a</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 18:01:28</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">adcb</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 18:06:27</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-02 19:35:09</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-02 19:35:48</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">acdb</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2023-06-03 11:43:06</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">dbca</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2023-06-03 11:44:18</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">dcab</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">rank3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>Finally, we create a column with the updated index number</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> d_coach <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(skigroup, coach, time) <span class="sc">|&gt;</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(skigroup, coach) <span class="sc">|&gt;</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ranktime =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>d_coach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 32 × 10
+   completed           coach rank  skigroup time      a     b     c     d
+   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 2023-06-02 18:01:28 a     adcb  a        rank1     1     4     3     2
+ 2 2023-06-02 19:35:48 a     acdb  a        rank2     1     4     2     3
+ 3 2023-06-03 11:44:18 a     dcab  a        rank3     3     4     2     1
+ 4 2023-06-03 14:35:35 a     bdca  a        rank4     4     1     3     2
+ 5 2023-06-02 18:06:27 b     dbca  a        rank1     4     2     3     1
+ 6 2023-06-02 19:35:09 b     dbca  a        rank2     4     2     3     1
+ 7 2023-06-03 11:43:06 b     dbca  a        rank3     4     2     3     1
+ 8 2023-06-03 14:36:56 b     bdac  a        rank4     3     1     4     2
+ 9 2023-06-05 16:43:01 a     dbca  b        rank1     4     2     3     1
+10 2023-06-05 19:00:34 a     dbac  b        rank2     3     2     4     1
+# ℹ 22 more rows
+# ℹ 1 more variable: ranktime &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>Here we make the data into a long format</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> d_coach <span class="sc">|&gt;</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">completed</span><span class="st">`</span>, <span class="st">`</span><span class="at">time</span><span class="st">`</span>))</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> d_coach <span class="sc">|&gt;</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(a,b,c,d), <span class="at">names_to =</span> <span class="st">"strategy"</span>) </span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>d_coach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 128 × 6
+   coach rank  skigroup ranktime strategy value
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;int&gt;
+ 1 a     adcb  a               1 a            1
+ 2 a     adcb  a               1 b            4
+ 3 a     adcb  a               1 c            3
+ 4 a     adcb  a               1 d            2
+ 5 a     acdb  a               2 a            1
+ 6 a     acdb  a               2 b            4
+ 7 a     acdb  a               2 c            2
+ 8 a     acdb  a               2 d            3
+ 9 a     dcab  a               3 a            3
+10 a     dcab  a               3 b            4
+# ℹ 118 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d_coach, <span class="at">choicemaker =</span> <span class="st">"coach"</span>, <span class="at">treatment =</span> <span class="st">"slfc"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>d_coach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 128 × 8
+   coach rank  skigroup ranktime strategy value choicemaker treatment
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;    
+ 1 a     adcb  a               1 a            1 coach       slfc     
+ 2 a     adcb  a               1 b            4 coach       slfc     
+ 3 a     adcb  a               1 c            3 coach       slfc     
+ 4 a     adcb  a               1 d            2 coach       slfc     
+ 5 a     acdb  a               2 a            1 coach       slfc     
+ 6 a     acdb  a               2 b            4 coach       slfc     
+ 7 a     acdb  a               2 c            2 coach       slfc     
+ 8 a     acdb  a               2 d            3 coach       slfc     
+ 9 a     dcab  a               3 a            3 coach       slfc     
+10 a     dcab  a               3 b            4 coach       slfc     
+# ℹ 118 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>d_skier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,304 × 8
+   skier rank  treatment skigroup ranktime strategy value choicemaker
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;    &lt;dbl&gt; &lt;chr&gt;      
+ 1 1     dacb  slfc      a        1        a            2 skier      
+ 2 1     dacb  slfc      a        1        b            4 skier      
+ 3 1     dacb  slfc      a        1        c            3 skier      
+ 4 1     dacb  slfc      a        1        d            1 skier      
+ 5 1     dcba  slfc      a        2        a            4 skier      
+ 6 1     dcba  slfc      a        2        b            3 skier      
+ 7 1     dcba  slfc      a        2        c            2 skier      
+ 8 1     dcba  slfc      a        2        d            1 skier      
+ 9 1     dcba  slfc      a        3        a            4 skier      
+10 1     dcba  slfc      a        3        b            3 skier      
+# ℹ 2,294 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>lookup <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">learner =</span> <span class="st">"skier"</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">rename</span>(d_skier, <span class="fu">all_of</span>(lookup))</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>d_skier <span class="ot">&lt;-</span> <span class="fu">select</span>(d_skier, <span class="fu">c</span>(<span class="st">"learner"</span>,<span class="st">"rank"</span>,<span class="st">"treatment"</span>,<span class="st">"skigroup"</span>,<span class="st">"ranktime"</span>,<span class="st">"strategy"</span>,<span class="st">"value"</span>,<span class="st">"choicemaker"</span>))</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>lookup <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">learner =</span> <span class="st">"coach"</span>)</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">rename</span>(d_coach, <span class="fu">all_of</span>(lookup))</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>d_coach <span class="ot">&lt;-</span> <span class="fu">select</span>(d_coach, <span class="fu">c</span>(<span class="st">"learner"</span>,<span class="st">"rank"</span>,<span class="st">"treatment"</span>,<span class="st">"skigroup"</span>,<span class="st">"ranktime"</span>,<span class="st">"strategy"</span>,<span class="st">"value"</span>,<span class="st">"choicemaker"</span>))</span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>d_coach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 128 × 8
+   learner rank  treatment skigroup ranktime strategy value choicemaker
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;      
+ 1 a       adcb  slfc      a               1 a            1 coach      
+ 2 a       adcb  slfc      a               1 b            4 coach      
+ 3 a       adcb  slfc      a               1 c            3 coach      
+ 4 a       adcb  slfc      a               1 d            2 coach      
+ 5 a       acdb  slfc      a               2 a            1 coach      
+ 6 a       acdb  slfc      a               2 b            4 coach      
+ 7 a       acdb  slfc      a               2 c            2 coach      
+ 8 a       acdb  slfc      a               2 d            3 coach      
+ 9 a       dcab  slfc      a               3 a            3 coach      
+10 a       dcab  slfc      a               3 b            4 coach      
+# ℹ 118 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>d_rank <span class="ot">&lt;-</span> <span class="fu">rbind</span>(d_skier, d_coach)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(d_rank,<span class="st">"../../data/data_analysis/d_rankdata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
