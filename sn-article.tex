@@ -429,10 +429,18 @@ Neither reinforcement learning ($\beta$ = 0.08, 95\% CI[-0.04, 0.2], $z$ = 1.31,
 \subsection{Reinforcement learning had a lower costs when performing suboptimal strategies compared to  reinforcement learning}\label{subsubsec3}
 Choosing the estimated best strategy is one thing, but avoiding the selection of a strategy significantly worse than the estimated best strategy is another. In a follow-up analysis, we computed the expected difference between the skiers' chosen suboptimal strategy and their estimated best strategy, which we referred to as 'cost.' A lower cost implies that the performer has better grasped the effects of various strategies. This analysis revealed that reinforcement had lower costs than supervised (free choice) learning did  ($\beta$ = 0.06 , 95\% CI [ 0.01 ,  0.12 ], $t$( 30.789 ) = 2.55 , $p$  =  0.016), suggesting that they had better learned the strategies.
 
-
-
 \subsection{Sensitivity to feedback}\label{subsec5}
-We conducted a win-stay, lose-switch (WSLS) analysis to test if reinforcement learning demonstrated greater sensitivity to feedback compared to supervised (free-choice) learning. In this analysis, heightened sensitivity would be indicated by a high probability of repeating an action following positive feedback and a low probability following negative feedback on a previous trial. As depicted in the model predictions (Fig. \ref{fig: choice_wsls}), both reinforcement learning and supervised (free-choice) learning demonstrated a higher probability of repeating a strategy after receiving positive feedback compared to negative feedback, as indicated by the negative slope for both groups. We found that the estimated marginal effects at the mean (MEM) was considerably lower for reinforcement learning (-0.18) compared to compared to supervised (free choice) learning (-0.11), yet this difference was not statistically significant %+(\input{latex/statistics/contrasts/contrast_winstay_loseswitch_rl_minus_slfc}).
+For å teste i hvilken grad trenerne i supervised (free choice) learning og utøverne i reinforcement learning brukte trial feedback til å ta beslutninger utførte vi en 'win-stay, lose-switch' (WSLS). In this analysis, heightened sensitivity would be indicated by a high predicted probability of repeating an action following good feedback and a low predicted probability following bad feedback on a previous trial. 
+
+ Figure \ref{fig: choice_wsls} shows the predicted probability of repeating the strategy on the previous trial if feedback was good. We found a statistical significant estimated marginal effects at the mean (MEM) for both the reinforcement learning 
+
+ \include{wsls}
+ 
+ 
+ lower for reinforcement learning (-0.18) compared to compared to supervised (free choice) learning (-0.11)
+
+
+As depicted in the model predictions (Fig. \ref{fig: choice_wsls}), both reinforcement learning and supervised (free-choice) learning demonstrated a higher probability of repeating a strategy after receiving positive feedback compared to negative feedback, as indicated by the negative slope for both groups. We found that the estimated marginal effects at the mean (MEM) was considerably lower for reinforcement learning (-0.18) compared to compared to supervised (free choice) learning (-0.11), yet this difference was not statistically significant ($\beta$ = -0.08, 95\% CI [-0.17, 0.02], $z$ = -1.55, $p$ $=$ 0.121) 
 
 
 
