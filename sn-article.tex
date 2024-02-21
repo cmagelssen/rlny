@@ -28,15 +28,21 @@
 
 %%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
 %%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst%  
- 
+
 %%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
 %%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
+%%\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
 %%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
 %%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
 %%\documentclass[pdflatex,sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
 %%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style 
 %%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+\RequirePackage{amsthm}
+
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Reference 
+% <some more package/preamble stuff>
+
+
 
 %%%% Standard Packages
 %%<additional latex packages if required can be included here>
@@ -55,6 +61,8 @@
 \usepackage{algorithmicx}%
 \usepackage{algpseudocode}%
 \usepackage{listings}%
+\usepackage{longtable}
+\usepackage{float}
 %%%%
 
 %%%%%=============================================================================%%%%
@@ -90,7 +98,7 @@
 
 \begin{document}
 
-\title[Article Title]{Article Title}
+\title[Article Title]{Reinforcement learning accelerates expertise in skilled alpine ski racers compared to standard coaching}
 
 %%=============================================================%%
 %% GivenName	-> \fnm{Joergen W.}
@@ -101,25 +109,39 @@
 %%  \sfx{IV}}\email{iauthor@gmail.com}
 %%=============================================================%%
 
-\author*[1,2]{\fnm{First} \sur{Author}}\email{iauthor@gmail.com}
+\author*[]{\fnm{Christian} \sur{Magelssen}}\email{cmagelssen@gmail.com}
 
-\author[2,3]{\fnm{Second} \sur{Author}}\email{iiauthor@gmail.com}
-\equalcont{These authors contributed equally to this work.}
+\author[2]{\fnm{Robert} \sur{Reid}}\email{iiauthor@gmail.com}
 
-\author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
-\equalcont{These authors contributed equally to this work.}
 
-\affil*[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{100190}, \state{State}, \country{Country}}}
+\author[1]{\fnm{Matthias} \sur{Gilgien}}\email{iiauthor@gmail.com}
 
-\affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
 
-\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+\author[1]{\fnm{Per} \sur{Haugen}}\email{perh@nih.no}
+
+
+\author[2]{\fnm{Simen Leithe} \sur{Tajet}}\email{iiiauthor@gmail.com}
+
+
+\author[1]{\fnm{Thomas} \sur{Losnegard}}\email{iiiauthor@gmail.com}
+
+
+\author[4]{\fnm{Romy} \sur{Frömer}}\email{r.froemer@bham.ac.uk}
+
+
+\affil*[1]{\orgdiv{Institute for Physical Performance}, \orgname{Norwegian School of Sport Sciences}, \orgaddress{\street{Sognsveien 220}, \city{Oslo}, \postcode{0863}, \state{Oslo}, \country{Norway}}}
+
+\affil[2]{\orgdiv{Institute of Sport and Social Science}, \orgname{Norwegian School of Sport Sciences}, \orgaddress{\street{Sognsveien 220}, \city{Oslo}, \postcode{0863}, \state{Oslo}, \country{Norway}}}
+
+\affil[3]{\orgdiv{The Norwegian Ski Federation}, \orgname{Organization}, \orgaddress{\street{Sognsveien 75 B1}, \city{Oslo}, \postcode{0840}, \state{Oslo}, \country{Norway}}}
+
+\affil[4]{\orgdiv{School of Psychology}, \orgname{University of Birmingham}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
 
 %%==================================%%
 %% Sample for unstructured abstract %%
 %%==================================%%
 
-\abstract{The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.}
+\abstract{Learning to select effective technical and tactical solutions to situations which arise during competition is a hallmark of expertise. Typically, these strategies are often taught by a coach who tells learners what to do. Here, we asked whether these strategies can be learned better with reinforcement learning, which emphasizes learning from evaluations. To address this question, ninety-eight skilled alpine skiers participated in a three-day learning experiment aimed at improving their performance on flats on slalom via four strategies. In the reinforcement learning group, the skiers chose strategies themselves based on trial feedback for evaluation. We compared this group to two supervised learning groups, one wherein we recruited coaches from the tested ski teams to coach on the strategy they believed would be best (free choice) and another where we recruited current World Cup coaches to coach on the theoretical best strategy (target skill). We found that skiers in the reinforcement learning group learned better than did those in the supervised (free choice) learning group but not compared to those in the supervised (target skill) group. However, selecting only one strategy comes at its own cost. Together, our results suggest that reinforcement learning can be an important training strategy for accelerating expertise}
 
 %%================================%%
 %% Sample for structured abstract %%
@@ -133,7 +155,7 @@
 % 
 % \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
 
-\keywords{keyword1, Keyword2, Keyword3, Keyword4}
+\keywords{Reinforcement learning, Supervised learning, Expertise development, Alpine skiing}
 
 %%\pacs[JEL Classification]{D8, H51}
 
@@ -149,9 +171,9 @@ In current practice, these strategies are typically trained with instruction-bas
 
 One drawback of the supervised learning strategy for training these decisions is that learners are simply told what to do based on what coaches believe to be a good strategy from their knowledge and experience. However, what coaches judge as a good strategy does not always align with reality, even for the best-trained eye \cite{supej_impact_2019, cochrum_visual_2021}. Learners might, therefore, miss opportunities to discover the best strategy when coaches opt for suboptimal strategies \cite{gray_plateaus_2017}. Supervised learning might also constrain learners to adopting a single ('universal') strategy for all situations rather than acquiring a repertoire of strategies and discerning the most effective strategies for each specific scenario. Finally, it remains uncertain whether the prescriptive approach is the most effective teaching strategy for achieving long-lasting learning effects \cite{wulf_instructions_1997, hodges_role_1999, williams_practice_2005,williams_effective_2023} 
 
-Learning to choose good strategies can also happen without the direct influence of a coach providing advice. The cornerstone of reinforcement learning \cite{sutton_reinforcement_2018} is that learners can learn by exploring strategies and evaluating their outcomes, using the successes and failures of outcomes as teaching signals. That is, rather than being told the putatively correct solution to the problem, as in supervised learning, they learn the value of different strategies, which allows them to finally pick the best solution. Specifically, these values are learned by comparing a given choice's outcomes with the currently expected outcome of that choice. Outcomes that exceed or fall short of expectations result in errors in reward prediction, signaling that the learner must update their predictions to better anticipate future rewards following that action \cite{rescorla_theory_1972}. These reward prediction errors are then incorporated to form a new and better estimate of reward, by updating expectations through a weighted running average. Reinforcement learning has been tremendously powerful in explaining human and animal learning \cite{waelti_dopamine_2001, schultz_neural_1997, pessiglione_dopamine-dependent_2006}, improving skill learning in laboratory-based tasks \cite{lior_shmuelof_overcoming_2012, abe_reward_2011, truong_error-based_2023, hasson_reinforcement_2015}, as well as training AI to perform complex tasks such as computer games starting from pixel inputs, only\cite{mnih_human-level_2015}. Based on this evidence our question was whether reinforcement learning offer an alternative to standard coach-based supervised learning to improve strategy selection and performance for skilled performers.
+Learning to choose good strategies can also happen without the direct influence of a coach providing advice. The cornerstone of reinforcement learning \cite{sutton_reinforcement_2018} is that learners can learn by exploring strategies and evaluating their outcomes, using the successes and failures of outcomes as teaching signals. That is, rather than being told the putatively correct solution to the problem, as in supervised learning, they learn the value of different strategies, which allows them to finally pick the best solution. Specifically, these values are learned by comparing a given choice's outcomes with the currently expected outcome of that choice. Outcomes that exceed or fall short of expectations result in errors in reward prediction, signaling that the learner must update their predictions to better anticipate future rewards following that action \cite{rescorla_theory_1972}. These reward prediction errors are then incorporated to form a new and better estimate of reward, by updating expectations through a weighted running average. Reinforcement learning has been tremendously powerful in explaining human and animal learning \cite{waelti_dopamine_2001, schultz_neural_1997, pessiglione_dopamine-dependent_2006}, improving skill learning in laboratory-based tasks \cite{lior_shmuelof_overcoming_2012, abe_reward_2011, truong_error-based_2023, hasson_reinforcement_2015}, as well as training AI to perform complex tasks such as computer games starting from pixel inputs, only\cite{mnih_human-level_2015}. Based on this evidence our question was whether reinforcement learning offers an alternative to standard coach-based supervised learning to improve strategy selection and performance for skilled performers.
 
-To address this question, we conducted a three-day learning experiment with ninety-eight skilled and elite alpine ski racers from Norway and Sweden. To facilitate skill development in this group with already skilled athletes, we chose a type of terrain where athletes typically have potential to improve their performance. Specifically, we defined four motion strategies suitable to enhance performance in flat sections in slalom  (\ref{fig:courseandstrategies}b). Our hypothesis was that skiers in the reinforcement learning group would learn to choose better strategies and thus achieve better performance than skiers subject to traditional supervised learning with a coach. To test this, we assigned skiers to three different learning groups with different instructions and feedback (Fig. \ref{fig:experiment}b): In the reinforcement learning group, skiers chose a strategy on every run and saw their race times to inform these decisions. In the supervised (free choice) learning group, a ski coach made this choice for the skier, while in the supervised (target skill) learning group, we recruited current World-Cup ski coaches to instruct skiers to select the strategy that we defined as the theoretically best strategy based on computational modeling \cite{lind_physics_2013} and observations of elite skiers \cite{reid_alpine_2020}. Coaches in the two supervised learning groups saw the times but were instructed to not disclose these to the skiers. 
+To address this question, we conducted a three-day learning experiment with ninety-eight skilled and elite alpine ski racers from Norway and Sweden. To facilitate skill development in this group of already skilled athletes, we chose a type of terrain where athletes typically have potential to improve their performance. Specifically, we defined four motion strategies suitable to enhance performance in flat sections in slalom  (\ref{fig:courseandstrategies}b). Our hypothesis was that skiers in the reinforcement learning group would learn to choose better strategies and thus achieve better performance than skiers subject to traditional supervised learning with a coach. To test this, we assigned skiers to three different learning groups with different instructions and feedback (Fig. \ref{fig:experiment}b): In the reinforcement learning group, skiers chose a strategy on every run and saw their race times to inform these decisions. In the supervised (free choice) learning group, a ski coach made this choice for the skier, while in the supervised (target skill) learning group, we recruited current World-Cup ski coaches to instruct skiers to select the strategy that we defined as the theoretically best strategy based on computational modeling \cite{lind_physics_2013} and observations of elite skiers \cite{reid_alpine_2020}. Coaches in the two supervised learning groups saw the times but were instructed to not disclose these to the skiers. 
 
 We found that the reinforcement learning group improved more during acquisition and performed better in retention than the supervised (free-choice) learning group. Both groups chose the individual skiers' estimated best strategy more often over the course of the sessions, but we did not find convincing evidence that the reinforcement learning group chose this strategy more often than the supervised (free choice) learning group. That said, we found that reinforcement learning had lower costs (that is, the expected difference between the individual skiers' estimated strategy and their chosen strategy) for suboptimally chosen strategies, suggesting that they had better learned to avoid bad strategies. This was not the sole explanation for their improved learning; however, the skiers improved more on one strategy that they picked often than on one supervised strategy (free choice), suggesting that reinforcement learning also caused motor vigor. We did not find convincing evidence that reinforcement learning learned better than supervised learning (target skill) and that selecting only one strategy all the time comes at is one’s own cost—the skiers did not learn to dissociate the effect of the other strategies.
 
@@ -174,7 +196,7 @@ We found that the reinforcement learning group improved more during acquisition 
 
 
 \subsection{Participants}
-We recruited ten alpine ski teams from Norway and Sweden comprising 98 alpine ski racers (age M = 18.1 years, SD= 2; 40 females, 58 males). Two skiers were excluded from the analysis due to an injury prior to the study (n=1) or sickness during the study (n=1); thus, a total of 96 skiers completed the entire study and were included in the analysis. We deliberately opted to recruit skiers with diverse skill levels for the study to augment the generalizability of our findings. However, to ensure a sufficient skill level to handle the specific icy snow conditions prepared in the skiing hall, we recruited only skiers aged 15 and older. Among the ski groups tested were five ski academies, three senior development teams, and two national ski teams. These skiers were generally highly skilled, with a median world rank of 605, but there was also considerable variability, as indicated by a substantial interquartile range (Q1 = 248, Q3 = 1390.5). A smaller subset of the participants (n = 13) was not world-ranked, as they had yet to record FIS points. Table 1 provides demographic information for each treatment group.
+We recruited ten alpine ski teams from Norway and Sweden comprising 98 alpine ski racers (age M = 18.1 years, SD= 2; 40 females, 58 males). Two skiers were excluded from the analysis due to an injury prior to the study (n=1) or sickness during the study (n=1); thus, a total of 96 skiers completed the entire study and were included in the analysis. We deliberately opted to recruit skiers with diverse skill levels for the study to augment the generalizability of our findings. However, to ensure a sufficient skill level to handle the specific icy snow conditions prepared in the skiing hall, we recruited only skiers aged 15 and older. Among the ski groups tested were five ski academies, three senior development teams, and two national ski teams. These skiers were generally highly skilled, with a median world rank of 605, but there was also considerable variability, as indicated by a substantial interquartile range (Q1 = 248, Q3 = 1390.5). A smaller subset of the participants (n = 13) was not world-ranked, as they had yet to compete in internationally sanctioned races that form the basis for calculating athlete points and rankings. Table 1 provides demographic information for each treatment group.
 
 Conducting studies on alpine ski racing poses challenges related to environmental control and resource constraints. Our sample size approach involved recruiting as many skiers as possible during the summer of 2023, with a set minimum sample size of 80 skiers, which we deemed appropriate for this context. Prior to data collection, data and power simulations for sample sizes of 80, 100, and 120 skiers were conducted, revealing simulated powers of 0.60, 0.75, and 0.80, respectively, for the smallest effect size of interest (0.3 second difference between groups) (\url{https://osf.io/c4t28}). The smallest effect size of interest was based on our knowledge of alpine skiing and discussions with coaches, but it was intended for a 50-meter longer course and more training sessions than we ultimately ended up using due to practical considerations. The sample size justification, task design, and analysis plan were preregistered before data collection (\url{https://osf.io/tfb2w}).
 
@@ -426,11 +448,11 @@ We conducted a win-stay, lose-switch (WSLS) analysis to test if reinforcement le
 \subsection{Larger cognitive separation of strategies in the reinforcement and supervised (free choice) learning than in supervised (target skill) learning}\label{subsec4}
 Directly reflecting their understanding of the effectiveness of strategies is how skiers or coaches evaluate them. We expected that these evaluations would diverge among the treatment groups and that reinforcement learning would have achieved a more consistent evaluation with their actual race times. Figure \ref{fig: rank}a displays the rankings for individuals with the authority  to choose strategies across all sessions, except for supervised (target skill) learning, where the skiers' rankings are shown because these coaches were informed ahead of the experiment about which strategies were expected to be the best. 
 
-As shown in Figure \ref{fig: rank}a and in supplementary table \ref{suptable_strategyranking_strategydifffam}, all treatment groups initially ranked 'extend with rock skis forward' as the best, followed by 'extend,' 'rock skis forward,' and 'stand against' immediately after the strategies' introduction during the familiarization phase. We did not find statistically significant differences in ranking between reinforcement learning and the two supervised learning groups for the strategies (Supplementary table \ref{suptable_strategyranking_diffgroupfam}, except that supervised (target skill) learning ranked 'extend' worse ($\beta$ = 0.45, 95\% CI[0.24,  0.67], $t$() = 4.17, $p$ $<$ 0.001) and 'extend with rock skis forward' better  ($\beta$ = -0. 42, 95\% CI[-0.63, -0.2], $t$() = -3.83, $p$ $<$ 0.001) than reinforcement learning did.
+As shown in Figure \ref{fig: rank}a and in supplementary table \ref{suptable_strategyranking_strategydifffam}, all treatment groups initially ranked 'extend with rock skis forward' as the best, followed by 'extend,' 'rock skis forward,' and 'stand against' immediately after the strategies' introduction during the familiarization phase. We did not find statistically significant differences in ranking between reinforcement learning and the two supervised learning groups for the strategies (Supplementary Table \ref{suptable_strategyranking_diffgroupfam}), except that supervised (target skill) learning ranked 'extend' worse ($\beta$ = 0.45, 95\% CI[0.24,  0.67], $t$(1700) = 4.17, $p$ $<$ 0.001) and 'extend with rock skis forward' better  ($\beta$ = -0.42, 95\% CI[-0.63, -0.2], $t$(1700) = -3.83, $p$ $<$ 0.001) than reinforcement learning did.
 
-The data depicted in the figure and the regression model reported in supplementary table \ref{suptable_strategyranking_strategiesslope} indicate that the positional ranks for the strategies "stand against" and "extend with rock skis forward" remained stable throughout all sessions across the treatment groups, yet there were some interesting trends. The rank of 'stand against' descriptively worsened over the sessions for all groups, but the change was only statistically significant for the supervised (target skill) learning group  ($\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.13 ], $t$() = 3.4 , $p$  $<$  0.001). In contrast, the 'extend with rock skis forward' strategy was ranked better over the sessions for all groups. However, the change was only statistically significant for the supervised (target skill) learning group ($\beta$ = -0.06 , 95\% CI[-0.11, -0.01], $t$( ) = -2.51, $p$ = 0.012). 
+The data depicted in the figure and the regression model reported in supplementary table \ref{suptable_strategyranking_strategiesslope} indicate that the positional ranks for the strategies "stand against" and "extend with rock skis forward" remained stable throughout all sessions across the treatment groups, yet there were some interesting trends. The rank of 'stand against' descriptively worsened over the sessions for all groups, but the change was only statistically significant for the supervised (target skill) learning group  ($\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.13 ], $t$(1700) = 3.4 , $p$  $<$  0.001). In contrast, the 'extend with rock skis forward' strategy was ranked better over the sessions for all groups. However, the change was only statistically significant for the supervised (target skill) learning group ($\beta$ = -0.06 , 95\% CI[-0.11, -0.01], $t$(1700) = -2.51, $p$ = 0.012). 
 
-The most interesting trend shifts were observed for the two middle-ranked strategies: 'extend' and 'rock skis forward'. The reinforcement learning group ranked the strategy 'extend' better and 'rock skis forward' worse over the sessions, and these changes were found to be statistically significant (Extend: $\beta$ = -0.1 , 95\% CI [ -0.15 ,  -0.05 ], $t$() = -3.73 , $p$  <  0.001; Rock skis forward:  $\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.15 ], $t$(  ) = 3.57 , $p$  <  0.001). Although supervised (target skill) and supervised (free choice) exhibited the same trend, they magnitude was smaller and did not reach statistical significance. We also identified a statistically significant interaction effect between reinforcement learning and supervised (target skill) learning for the 'rock skis forward' strategy ($\beta$ = -0.07, 95\% CI[-0.14 to 0], $t$() = -1.97,$p$ = 0.049), providing evidence that reinforcement learning learned to separate strategies better over time over time than the supervised (target skill) learning did. We did, however, not find other interaction effects (Supplementary table \ref{suptable_strategyranking_diffindiff_strategiesslope})) 
+The most interesting trend shifts were observed for the two middle-ranked strategies: 'extend' and 'rock skis forward'. The reinforcement learning group ranked the strategy 'extend' better and 'rock skis forward' worse over the sessions, and these changes were found to be statistically significant (Extend: $\beta$ = -0.1 , 95\% CI [ -0.15 ,  -0.05 ], $t$(1700) = -3.73 , $p$  <  0.001; Rock skis forward:  $\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.15 ], $t$(1700) = 3.57 , $p$  <  0.001). Although supervised (target skill) and supervised (free choice) exhibited the same trend, they magnitude was smaller and did not reach statistical significance. We also identified a statistically significant interaction effect between reinforcement learning and supervised (target skill) learning for the 'rock skis forward' strategy ($\beta$ = -0.07, 95\% CI[-0.14 to 0], $t$(1700) = -1.97,$p$ = 0.049), providing evidence that reinforcement learning learned to separate strategies better over time over time than the supervised (target skill) learning did. We did, however, not find other interaction effects (Supplementary table \ref{suptable_strategyranking_diffindiff_strategiesslope})) 
 
 
 \begin{figure}[H]
@@ -446,6 +468,36 @@ During forced exploration, there were no statistically significant differences b
 The race times for all strategies improved significantly from the forced exploration to retention for both reinforcement learning and supervised (free-choice) learning, except for the "stand-against" strategy, which was not statistically significant in the reinforcement learning group. This deviation may be attributed to the limited number of observations for this strategy within the group. Interestingly, we found that the reinforcement learning group improved more on the "extend" strategy from forced exploration to retention than the supervised (free choice) learning group ($\beta$ = 0.04 , 95\% CI[0.01, 0.07], $t$(1378.879) = 2.34, $p$ = 0.020). We did not find evidence for such an interaction effect for any of the other three strategies ( Supplementary Table \ref{Supplementarytable_strategyeffect_7}). 
 
 As supervised (target skill) learning only trained on "extend with rock skis forward" strategy during the free choice sessions and almost exclusively during retention, we conducted a separate analysis comparing all groups on this strategy. This analysis revealed that all groups improved on the "extend with rock skis forward" strategy  (Supplementary Table \ref{Supplementarytable_strategyeffect_8}). However, no statistically significant differences were found in skill improvement for this strategy between reinforcement learning and either supervised (free choice) learning ($\beta$ = 0, 95\% CI[-0.03, 0.02], $t$(1064.204) = -0.3, $p$ = 0.765) or supervised (target skill) learning ($\beta$ = 0.02, 95\% CI [-0.01, 0.04], $t$(1062.577) = 1.07, $p$ = 0.283).
+
+
+\section{Discussion}
+
+Learning to select effective strategies is a distinctive characteristic of expertise. Typically, these strategies come from a coach who imparts knowledge on which strategies to adopt. Here, we instead asked whether shifting the training strategy from direct instruction to evaluation can accelerate expertise in skilled performers. To address this question, we developed four strategies with the potential to improve race time on flat sections in slalom and allocated ninety-eight skilled alpine ski racers to one of three treatment groups who learned the strategy choices in different ways. The skiers in the reinforcement learning group were tasked with finding the best of these strategies themselves using trial feedback for evaluation. The skiers in the supervised (free choice) learning group were assigned to a coach from the tested ski teams who selected a strategy for the skier and provided feedback on their execution. Finally, in the supervised (target skill) learning group, the skiers were assigned a current World Cup coach to coach in the 'extend with rock skis forward' skiing strategy — a technique we defined as the theoretically best strategy based on observations of elite skiers, simulations and theory. Overall, we found that reinforcement learning learned better than the supervised (free choice) learning group [usikker på om jeg skal ta med noe mer hva vi fant her faktisk?]
+
+To begin, our findings that reinforcement improved more during acquisition and that performance improved more during retention are in accordance with previous studies showing that reinforcement learning improves skill retention \cite{therrien_effective_2016, truong_error-based_2023, hasson_reinforcement_2015}. One suggested explanation for these findings is that reinforcement learning trains the slow-learning process that secures long-term learning \cite{huang_rethinking_2011}. The better race times in reinforcement learning also align with prior studies on the 'discovery learning' approach, where practice without explicit instruction yields better learning effects \cite{wulf_instructions_1997, hodges_learning_2001, hodges_role_1999}. We did, however, not find convincing evidence that reinforcement learning learned better than supervised (target skill) learning, although their race times were descriptively better during both acquisition and retention. The selection of strategy therefore appears to have played an important role, but we will offer a second account later in this discussion.
+
+Contrary to our expectation, we did not find convincing evidence for improved transfer in the reinforcement learning group. One explanation for this is that reinforcement learning only improves learning in situations where rewards have been previously received \cite{robertson_memory_2018}, and aligns with \cite{hasson_reinforcement_2015} who found better retention but not transfer with reinforcement learning compared with supervised learning. It it possible that a more structured learning approach, where learners are exposed to frequent switches between situations, is necessary to grasp the task's structure and promote transfer \cite{braun_structure_2010}. Future research should possibly investigate the effect of structural learning. 
+
+Our work sought to explain these differences in race times through the choice of strategies. We did, however, not find convincing evidence that the reinforcement learning group selected the theoretical best or the individual skiers' estimated best strategy more often than the supervised (free choice) learning group. The choices were also characterized by a clear 'win-stay, lose-switch' signature in both groups, where the chooser opted to stick with choices that yielded good outcomes. However, despite significant descriptive differences favoring reinforcement learning, this pattern was not statistically significant either. An obvious explanation for this was the high coaching experience the coaches in the study possessed, as well as their access to the outcomes and undergoing considerable learning themselves. 
+
+Despite the lack of convincing evidence that reinforcement learning selected the best strategy more often than supervised (free-choice) learning did, reinforcement learning had a lower expected cost (or regret) for skiers whose chosen strategies were suboptimal during retention. One explanation is that skiers in reinforcement learning gained better insight into the effectiveness of the strategies by objectively evaluating them during acquisition, which enabled them to choose strategies that did not adversely affect their times too much. This account cannot fully explain the group differences in race time, however. Reinforcement learning also improved more on the 'extend' strategy over the course of the sessions than supervised (free choice) learning. Given that this group was not assigned a coach to help them improve, it is likely that the reinforcement feedback increased motor vigor \cite{shadmehr_vigor_2020, pietro_mazzoni_why_2007, niv_normative_2006} when performing that strategy. Indeed, previous studies have shown that people make saccades \cite{takikawa_modulation_2002} and reach faster \cite{summerside_vigor_2018} toward targets paired with rewards than unpaired targets. Comments from a few coaches, who watched the retention and transfer from the sideline, mentioned that skiers in the reinforcement learning group used more forceful arm movements than skiers in the other groups, although the instructions did not explicitly tell them to do that.
+
+The vigor perspective may also help explaining why reinforcement learning did not learn better than the supervised (target skill) learning group, as previous studies also have found that training with explicit knowledge boosts motor vigor much like the effect of reward itself \cite{anderson_rewards_2020, wong_explicit_2015}. It may therefore be that the getting information from a current World Cup coach that one strategy was best boosted the implicit motivation to perform this strategy well. 
+
+A surprising and interesting discovery was that supervised (target skill) learning, to a lesser extend than reinforcement learning, did not learn to cognitive dissociate the 'extend' and 'rock skis forward' strategies, despite big race time differences. This finding suggests that learners may miss potential learning by only being exposed to one strategy instead of a broader exploration of alternatives. Over time, such exploration could prove crucial in developing innovative strategies, as athletes cultivate a deeper comprehension of the relationship between their actions and performance outcomes \cite{ericsson_scientific_1998}. Future studies should investigate this learning further. 
+
+The insights learned from our study suggest important implications for coaches when designing training sessions to improve skills. Based on our findings, coaches are advised to formulate strategies tailored to their respective sports and to aid learners in impartially evaluating these strategies. This pedagogical approach aligns with previous recommendations emphasizing the importance of fostering learners' cognitive representations to develop innovative solutions rather than merely imparting knowledge from a coach \cite{ericsson_scientific_1998}. These strategies may start out broadly for young athletes but should progressively become more focused as athletes advance in expertise. It is essential to clarify that we do not propose replacing traditional teaching methods with this approach but suggest integrating it as a supplementary tool to augment decision-making training.
+
+Before practitioners embrace our recommendation to incorporate more strategy evaluation into their coaching practices, it is important to consider the practical significance of the effect size and its potential amplifying and counteracting mechanisms\cite{anvari_not_2023}. Notably, the estimated effect size during retention was smaller than our predefined smallest effect size of interest. This benchmark, however, was set for a longer slalom course and more training sessions than we could execute due to space and time constraints in the ski hall. Consequently, we exercise caution in outright dismissing its practical significance. However, our estimated effect size might be meaningful if we consider that our slalom course approximately equals one-third of a full slalom race course and that a slalom race consists of two runs. Therefore, the 0.12-second effect size could be scaled up by a factor of 6, but it is more realistic to assume that flat sections of a course constitute only one-third of the entire course. On this basis, the 0.12-second difference translates into an improved FIS world ranking of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement Discussion \ref{supdiscussion}). This effect could be important for coaches, but we must remember that sports expertise involves cognitive decisions  \cite{mangalam_investigating_2023, krakauer_motor_2019}, such as switching from one strategy to another during a race. Our study did not capture such decisions because we focused on flat sections, only. Finally, the estimated effect could have been larger if not because reinforcement learning and supervised learning conducted the retention and transfer tests simultaneously. This design choice allowed the skiers to observe each other, possibly diluting some of the effect. However, this decision was made to mirror the conditions of alpine competitions and gave us confidence that athletes experienced similar conditions during testing.
+
+
+\subsubsection{Limitation of the study}
+
+One limitation of the study is that we did not include motion capture of the skiers performing the strategies. Therefore, we do not know precisely what the skiers did when executing the strategies, other than verifying that they were able to perform the strategy satisfactorily during the famiration phase. However, we followed the recommendation to make discrete strategies. 
+
+\subsubsection{Conclusion}
+
+In conclusion, our data showed that reinforcement learning improved more during acquisition and performed better at retention that supervised (free choice) learning. The best explanation for this result was better understanding of the skills as well as better performance of the some strategies themselves. In contrast, we did not find evidence that the supervised (target skill) learning improved more. Yet always picking the correct strategy comes as it own costs; the learner may not dissociate strategies which might prevent them from other learning. [usikker på hva jeg skall skrive i konklusjonen]
 
 
 
@@ -506,9 +558,412 @@ BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies
 
 \begin{appendices}
 
-\section{Section title of first appendix}\label{secA1}
+\section{Description of strategies}\label{sup_strategies}
+This supplementary describes each strategy in more detail. 
 
-An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+The "stand against" strategy emphasized maintaining a stable stance against external forces without body extension along the body's longitudinal axis or rocking skis forward. This term is frequently used by Norwegian ski coaches when communicating with skiers to help them improve their race times. 
+
+The "rock skis forward" strategy involves rocking the ski forward during the turning phase. This action effectively regulates the distribution of pressure over the skis. During the initiation and control phases of a turn, the pressure is generally shifted forward to bend the ski's forebody, increasing friction with the snow and enabling it to turn more sharply. However, at some point, during turn progression, the skier aims to stop turning and therefore shifts the pressure further back on the skis, thereby reducing turning and braking forces \cite{lemaster_skiers_1999, lemaster_ultimate_2010}. Investigations of elite alpine ski racers have shown that high performing skiers tend to rock skis more forward and pressure the back part of the ski for considerable longer time during a turn, than slower skiers \cite{reid_kinematic_2010, tjorhom_beskrivelse_2007, reid_alpine_2020}. To make the information more specific for the skiers, we communicated, that the maximum range of the rocking movement was about 30-50 centimeters from gate passage to completion of the turn, which is in correspondence with biomechanical evidence of elite ski racers \cite{reid_kinematic_2010}. 
+
+The "extend" strategy involves extending the body from a laterally tilted position during the turn, closer to the turn's center of rotation. This pushing motion leads to more proper handling of a reservoir of energy available when skiers lower their bodies in the switch between turns. When skiers extend their bodies, while being laterally inclined in the slalom turn, they create ground reaction force. The radial component of the ground reaction force moving the center of mass closer to the center of rotation increases velocity, in accord with the principle of mechanical energy conservation \cite{lind_physics_2013}. Simulation studies of individuals extending their body in rollers or during carved slalom turns have shown that this movement can increase speed \cite{mote_accelerations_1983,luginbuhl_identification_2023}, and the effect has been observed in various ways with elite skiers during training and competition \cite{reid_kinematic_2010, magelssen_is_2022, supej_differential_2008}. 
+
+Finally, "extend with rocking skis forward" was expected to be the best strategy combining the two effects from extending and rocking skis forward, and we therefore defined this as the theoretical best strategy. Simulations of skiers extending their bodies in the bottom of a roller have observed an additional effect of rocking the skis forward \cite{mote_accelerations_1983}
+
+
+\section{Snow preparation}\label{sup_snowprep}
+We dedicated a substantial amount of time and effort to prepare the hill for our learning experiment. Our primary objective was to ensure that the snow conditions were as identical and fair as possible for all participants. To achieve this, we collaborated closely with the SNØ facility’s staff and the coaches of the Norwegian Alpine Ski team. Together, we devised a comprehensive plan to achieve consistency before each group of skiers took to the slopes. This report will detail the steps we took to ensure the snow was ready for our skiers and provide insight into the reasoning behind our choices. The purpose of this supplementary note is to assist you in evaluating our study and to transparently document our commitment to delivering the best possible conditions for our skiers.
+
+\subsection*{Ski group A}
+About two weeks before testing Group A, new snow was created on the racing hill. The evening before data collection, machines groomed the racing hill (Fig. \ref{fig:snowprep}a:left). We then watered the hill and left it to freeze overnight to create a hard and firm surface (Fig. \ref{fig:snowprep}a:right). 
+
+\subsection*{Ski group B}
+Ski group B began testing the day after ski group A completed their testing. Once group A finished, we inspected the race hill(Fig. \ref{fig:snowprep}b:left), noticed some small holes, and decided to fill them before watering it again (Fig. \ref{fig:snowprep}b:right).  
+
+\subsection*{Ski group C}
+After ski group B, the race hill started getting icy, lacking grip in some areas. We were concerned that watering it again might worsen conditions, making it too challenging for skiers. Consequently, we opted to gently groom the hill with a machine and let the grooves set for a couple of days. See figure \ref{fig:snowprep}c for the result of this process.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/figure_appendix_snowprep.jpg}
+\caption{Images showing the hill preparation for the four ski groups. \textbf{a}. Shows the racing hill for ski group A. The left image displays the racing hill the evening before data collection after it was groomed. The right image shows the watering process for ski group A. \textbf{b}. Shows the racing hill for ski group B. The left image depicts the course inspection immediately after ski group A finished their testing. The right image shows the watering process for ski group B. Note that we did not groom the course this time, so in the image, you can see some uneven surfaces on the snow, which were evened out by watering it. \textbf{c}. Shows the racing hill for ski group C. The left image displays the hill after it was groomed and left overnight. The right image shows the same but from the bottom. \textbf{d}. Shows the racing hill for ski group D. The left image illustrates the hill for ski group C on their retention test. Note the icy surface, which was the reason why we produced new snow. The right image shows the watering process for ski group D. 
+}
+\label{fig:snowprep}
+\end{figure}
+ 
+\subsection*{Ski group D}
+After Ski Group C, the race hill needed new snow because some areas had become icy, with minimal grip (Fig. ref{fig:snowprep}d:left)). Although the conditions were suitable for Ski Group C, they would not have worked for a new ski group undergoing testing. Consequently, we decided to produce new snow two days before Ski Group D started their training. This fresh snow was pushed into the racing hill the day before testing and groomed. Subsequently, we watered the hill and let it freeze overnight (Fig. \ref{fig:snowprep}d:right)
+
+
+
+\section{Course setting}\label{sup_coursesetting}
+We used a standard procedure to set the slalom courses, ensuring a fixed length and offset. First, we stretched a taut rope between two nails on either side of the ski hill. This rope helped us locate the exact starting line consistently from day to day. From the nail on the skier's right, we measured 6 meters into the slope. We did the same from a fixed point approximately 50 meters down the course, but here we measured 3.4 meters out. Then, we pulled a 50-meter-long measuring tape between the two points to establish the line down the hill   We chose a measuring tape over a rope because ropes tend to expand and contract when they get wet and dry, respectively (see Fig.\ref{fig:coursesetting}a for an image illustrating this process).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{figures/figure_appendix_coursesetting.jpg}
+\caption{Images showing the procedure for course setting. \textbf{a}. The image illustrates the process of establishing the straight reference line down the hill. The long blue gate is positioned 6 meters from the nail on the skier's right. \textbf{b}. This image showcases the gate-setting method. A white rope is secured to the reference line with a carabiner hook, and a marker on the rope indicates a distance of 1.9 meters for placing the gate. \textbf{c}. The image reveals the tracks left behind by a group of skiers that was tested
+}
+\label{fig:coursesetting}
+\end{figure}
+ 
+
+Once the 50-meter straight line was established, we laid out a rope segment attached to a carabiner hooked onto the long rope. We moved this segment 1.9 meters out from the rope in one turn and 0 meters in the other, with a 10-meter vertical space. This ensured that the course followed a straight line down the slope and was set with the correct offset (see figure\ref{fig:coursesetting}b for an image illustrating this process). Once all the gates along the 50-meter measurement tape were set, we used a new fixation point down the slope and continued down the course. We practiced this procedure several times before the experiment, and the variation in course setting was a maximum of 10 cm at the end of the course.
+
+Due to wear and tear on the trails, we opted to shift the course laterally or rotate it, depending on the situation. With the exception of one skiing group, we followed the following practice. On day 1, we set the course as described above. On day 2, we rotated the course so that the first turn went in the opposite direction of day 1. On the third day, we shifted the course closer to the wall on skiers' right (see figure \ref{fig:coursesetting}c for an image showing the tracks in the hill left after a skigroup had completed the experiment). 
+
+
+\section{Tables}
+
+
+\subsection{Supplementary Table}
+
+\subsubsection{Race time}
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}\label{suptable_racetime_groupdiffeachsession}
+\caption*{
+{\large Race time} \\ 
+{\small Difference between groups at each session}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 16.62 & 16.62 & 16.27 to 16.97 & 132.68 &  $<$ 0.001 \\ 
+session2 & -0.39 & -0.39 & -0.43 to -0.35 & -20.09 &  $<$  0.001 \\ 
+session3 & -0.40 & -0.40 & -0.45 to -0.35 & -15.74 &  $<$  0.001 \\ 
+sessionblock1 : treatment2 & 0.06 & 0.06 & -0.20 to 0.32 & 0.48 &  =  0.631 \\ 
+sessionblock2 : treatment2 & 0.14 & 0.14 & -0.11 to 0.39 & 1.11 &  =  0.272 \\ 
+sessionblock3 : treatment2 & 0.20 & 0.20 & -0.08 to 0.49 & 1.43 &  =  0.157 \\ 
+sessionblock1 : treatment3 & 0.18 & 0.18 & -0.08 to 0.44 & 1.37 &  =  0.174 \\ 
+sessionblock2 : treatment3 & 0.05 & 0.05 & -0.20 to 0.31 & 0.43 &  =  0.672 \\ 
+sessionblock3 : treatment3 & 0.19 & 0.19 & -0.09 to 0.48 & 1.37 &  =  0.176 \\ 
+sd\_\_(Intercept) & 0.51 & 0.51 & & & & \\ 
+cor\_\_(Intercept).session2 & -0.03 & -0.03 & & & & \\ 
+cor\_\_(Intercept).session3 & 0.23 & 0.23 & & & &  \\ 
+sd\_\_session2 & 0.15 & 0.15 & & & &  \\ 
+cor\_\_session2.session3 & 0.73 & 0.73 & & & & \\ 
+sd\_\_session3 & 0.22 & 0.22 & & & & \\ 
+sd\_\_(Intercept) & 0.23 & 0.23 & & & & \\ 
+sd\_\_Observation & 0.21 & 0.21 & & & & \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: racetime \textasciitilde{} session / treatment + (1  \textbar{} skigroup) + (1 + session \textbar{} skigroup:skier)\\
+\end{minipage}
+
+
+
+\subsubsection{Strategy ranking}\label{suptable_strategyranking}
+\clearpage
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_strategydifffam}
+\caption*{
+{\large Strategy ranking} \\ 
+{\small Estimated difference between strategies during familiarization}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$  0.001 \\ 
+Supervised (free choice) & 0.00 & 0.00 & -0.16 to 0.16 & 0.00 &  =  1.000 \\ 
+Supervised (target skill) & 0.00 & 0.00 & -0.11 to 0.11 & 0.00 &  =  1.000 \\ 
+Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
+Reinforcement learning : b & -1.72 & -1.72 & -1.94 to -1.50 & -15.47 &  $<$  0.001 \\ 
+Supervised (free choice) : b & -1.43 & -1.43 & -1.81 to -1.05 & -7.38 &  $<$  0.001 \\ 
+Supervised (target skill) : b & -1.20 & -1.20 & -1.41 to -0.99 & -11.32 &  $<$  0.001 \\ 
+Reinforcement learning : c & -1.05 & -1.05 & -1.27 to -0.83 & -9.42 &  $<$  0.001 \\ 
+Supervised (free choice) : c & -0.70 & -0.70 & -1.08 to -0.32 & -3.60 &  $<$  0.001 \\ 
+Supervised (target skill) : c & -0.95 & -0.95 & -1.16 to -0.74 & -8.94 &  $<$  0.001 \\ 
+Reinforcement learning : d & -2.06 & -2.06 & -2.28 to -1.84 & -18.49 &  $<$  0.001 \\ 
+Supervised (free choice) : d & -2.09 & -2.09 & -2.47 to -1.71 & -10.77 &  $<$  0.001 \\ 
+Supervised (target skill) : d & -2.41 & -2.41 & -2.61 to -2.20 & -22.67 &  $<$  0.001 \\ 
+Supervised (free choice) : Ranktime & 0.00 & 0.00 & -0.04 to 0.04 & 0.00 &  =  1.000 \\ 
+Supervised (target skill) : Ranktime & 0.00 & 0.00 & -0.04 to 0.04 & 0.00 &  =  1.000 \\ 
+Reinforcement learning : b : Ranktime & -0.15 & -0.15 & -0.22 to -0.07 & -3.95 &  $<$  0.001 \\ 
+Supervised (free choice): b : Ranktime & -0.12 & -0.12 & -0.22 to -0.02 & -2.45 &  =  0.014 \\ 
+Supervised (target skill) : b : Ranktime & -0.13 & -0.13 & -0.20 to -0.06 & -3.65 &  $<$  0.001 \\ 
+Reinforcement learning : c : Ranktime & 0.05 & 0.05 & -0.03 to 0.12 & 1.21 &  =  0.225 \\ 
+Supervised (free choice): c : Ranktime & -0.01 & -0.01 & -0.11 to 0.09 & -0.27 &  =  0.791 \\ 
+Supervised (target skill) : c : Ranktime & -0.06 & -0.06 & -0.13 to 0.01 & -1.78 &  =  0.076 \\ 
+Reinforcement learning : d : Ranktime & -0.09 & -0.09 & -0.17 to -0.02 & -2.51 &  =  0.012 \\ 
+Supervised (free choice) : d : Ranktime & -0.09 & -0.09 & -0.19 to 0.01 & -1.85 &  =  0.065 \\ 
+Supervised (target skill) : d : Ranktime & -0.15 & -0.15 & -0.22 to -0.08 & -4.18 &  $<$  0.001 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime) \\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
+\end{minipage}
+
+
+
+\clearpage
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_diffgroupfam}
+\caption*{
+{\large Strategy ranking} \\ 
+{\small Estimated difference in difference for each strategy between groups}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$ 0.001 \\ 
+b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
+c & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
+d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
+Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
+a : Supervised (free choice) & -0.15 & -0.15 & -0.46 to 0.16 & -0.96 &  =  0.340 \\ 
+b : Supervised (free choice) & 0.14 & 0.14 & -0.17 to 0.45 & 0.87 &  =  0.385 \\ 
+c : Supervised (free choice) & 0.20 & 0.20 & -0.11 to 0.51 & 1.26 &  =  0.209 \\ 
+d : Supervised (free choice) & -0.19 & -0.19 & -0.50 to 0.13 & -1.17 &  =  0.242 \\ 
+a : Supervised (target skill) & -0.07 & -0.07 & -0.28 to 0.15 & -0.63 &  =  0.531 \\ 
+b : Supervised (target skill) & 0.45 & 0.45 & 0.24 to 0.67 & 4.17 &  $<$  0.001 \\ 
+c : Supervised (target skill) & 0.03 & 0.03 & -0.18 to 0.24 & 0.29 &  =  0.772 \\ 
+d : Supervised (target skill) & -0.42 & -0.42 & -0.63 to -0.20 & -3.83 &  $<$  0.001 \\ 
+b : Ranktime & -0.13 & -0.13 & -0.18 to -0.09 & -5.56 &  $<$  0.001 \\ 
+c : Ranktime & -0.01 & -0.01 & -0.06 to 0.04 & -0.43 &  =  0.665 \\ 
+d : Ranktime & -0.11 & -0.11 & -0.16 to -0.06 & -4.65 &  $<$  0.001 \\ 
+a : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.19 &  =  0.847 \\ 
+b : Supervised (free choice) : Ranktime & 0.03 & 0.03 & -0.05 to 0.12 & 0.73 &  =  0.465 \\ 
+c : Supervised (free choice) : Ranktime & -0.05 & -0.05 & -0.14 to 0.04 & -1.13 &  =  0.259 \\ 
+d : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.21 &  =  0.837 \\ 
+a : Supervised (target skill) : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.00 &  =  0.317 \\ 
+b : Supervised (target skill) : Ranktime & 0.05 & 0.05 & -0.02 to 0.13 & 1.48 &  =  0.140 \\ 
+c : Supervised (target skill) : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.97 &  =  0.049 \\ 
+d : Supervised (target skill) : Ranktime & -0.02 & -0.02 & -0.09 to 0.05 & -0.50 &  =  0.615 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
+\end{minipage}
+
+
+
+\clearpage
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_strategiesslope}
+\caption*{
+{\large Strategy ranking} \\ 
+{\small Estimated slopes per strategy for each treatment group}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$  0.001 \\ 
+Supervised (free choice) & 0.00 & 0.00 & -0.16 to 0.16 & 0.00 &  =  1.000 \\ 
+Supervised (target skill)  & 0.00 & 0.00 & -0.11 to 0.11 & 0.00 &  =  1.000 \\ 
+b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
+c  & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
+d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
+Supervised (free choice) : b & 0.29 & 0.29 & -0.15 to 0.73 & 1.29 &  =  0.197 \\ 
+Supervised (target skill) : b & 0.52 & 0.52 & 0.22 to 0.82 & 3.39 &  $<$  0.001 \\ 
+Supervised (free choice) : c & 0.35 & 0.35 & -0.09 to 0.79 & 1.56 &  =  0.118 \\ 
+Supervised (target skill)  : c & 0.10 & 0.10 & -0.20 to 0.40 & 0.65 &  =  0.517 \\ 
+Supervised (free choice) : d & -0.03 & -0.03 & -0.47 to 0.41 & -0.15 &  =  0.879 \\ 
+Supervised (target skill)  : d & -0.35 & -0.35 & -0.65 to -0.05 & -2.26 &  =  0.024 \\ 
+Reinforcement learning : a : Ranktime & 0.05 & 0.05 & 0.00 to 0.10 & 1.86 &  =  0.064 \\ 
+Supervised (free choice) : a : Ranktime & 0.06 & 0.06 & -0.01 to 0.13 & 1.61 &  =  0.107 \\ 
+Supervised (target skill) : a : Ranktime & 0.09 & 0.09 & 0.04 to 0.13 & 3.40 &  $<$  0.001 \\ 
+Reinforcement learning : b : Ranktime & -0.10 & -0.10 & -0.15 to -0.05 & -3.73 &  $<$  0.001 \\ 
+Supervised (free choice) : b : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.85 &  =  0.065 \\ 
+Supervised (target skill) : b : Ranktime & -0.04 & -0.04 & -0.09 to 0.00 & -1.77 &  =  0.077 \\ 
+Reinforcement learning : c : Ranktime & 0.09 & 0.09 & 0.04 to 0.15 & 3.57 &  $<$  0.001 \\ 
+Supervised (free choice) : c : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.24 &  =  0.216 \\ 
+Supervised (target skill) : c : Ranktime & 0.02 & 0.02 & -0.03 to 0.07 & 0.89 &  =  0.376 \\ 
+Reinforcement learning : d : Ranktime & -0.04 & -0.04 & -0.10 to 0.01 & -1.70 &  =  0.090 \\ 
+Supervised (free choice) : d : Ranktime & -0.04 & -0.04 & -0.11 to 0.03 & -1.00 &  =  0.317 \\ 
+Supervised (target skill) : d : Ranktime & -0.06 & -0.06 & -0.11 to -0.01 & -2.51 &  =  0.012 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lm(Rank \textasciitilde{} treatment * strategy/ranktime)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
+\end{minipage}
+
+\clearpage
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_diffindiff_strategiesslope}
+\caption*{
+{\large Strategy ranking} \\ 
+{\small Estimated difference in difference for each strategy between groups}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$ 0.001 \\ 
+b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
+c & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
+d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
+Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
+a : Supervised (free choice) & -0.15 & -0.15 & -0.46 to 0.16 & -0.96 &  =  0.340 \\ 
+b : Supervised (free choice) & 0.14 & 0.14 & -0.17 to 0.45 & 0.87 &  =  0.385 \\ 
+c : Supervised (free choice) & 0.20 & 0.20 & -0.11 to 0.51 & 1.26 &  =  0.209 \\ 
+d : Supervised (free choice) & -0.19 & -0.19 & -0.50 to 0.13 & -1.17 &  =  0.242 \\ 
+a : Supervised (target skill) & -0.07 & -0.07 & -0.28 to 0.15 & -0.63 &  =  0.531 \\ 
+b : Supervised (target skill) & 0.45 & 0.45 & 0.24 to 0.67 & 4.17 &  $<$  0.001 \\ 
+c : Supervised (target skill) & 0.03 & 0.03 & -0.18 to 0.24 & 0.29 &  =  0.772 \\ 
+d : Supervised (target skill) & -0.42 & -0.42 & -0.63 to -0.20 & -3.83 &  $<$  0.001 \\ 
+b : Ranktime & -0.13 & -0.13 & -0.18 to -0.09 & -5.56 &  $<$  0.001 \\ 
+c : Ranktime & -0.01 & -0.01 & -0.06 to 0.04 & -0.43 &  =  0.665 \\ 
+d : Ranktime & -0.11 & -0.11 & -0.16 to -0.06 & -4.65 &  $<$  0.001 \\ 
+a : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.19 &  =  0.847 \\ 
+b : Supervised (free choice) : Ranktime & 0.03 & 0.03 & -0.05 to 0.12 & 0.73 &  =  0.465 \\ 
+c : Supervised (free choice) : Ranktime & -0.05 & -0.05 & -0.14 to 0.04 & -1.13 &  =  0.259 \\ 
+d : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.21 &  =  0.837 \\ 
+a : Supervised (target skill) : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.00 &  =  0.317 \\ 
+b : Supervised (target skill) : Ranktime & 0.05 & 0.05 & -0.02 to 0.13 & 1.48 &  =  0.140 \\ 
+c : Supervised (target skill) : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.97 &  =  0.049 \\ 
+d : Supervised (target skill) : Ranktime & -0.02 & -0.02 & -0.09 to 0.05 & -0.50 &  =  0.615 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
+\end{minipage}
+\clearpage
+
+\subsubsection{Strategies effect}
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}
+\caption*{
+{\large Strategy effect} \\ 
+{\small Estimated difference between strategies during forced exploration}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\ 
+\midrule\addlinespace[2.5pt]
+(Intercept) & 16.88 & 16.88 & 16.56 to 17.20 & 147.94 &  $<$  0.001 \\ 
+Supervised (free choice) & 0.06 & 0.06 & -0.21 to 0.32 & 0.42 &  =  0.674 \\ 
+Supervised (target skill) & 0.17 & 0.17 & -0.09 to 0.43 & 1.30 &  =  0.197 \\ 
+Reinforcement learning : b & -0.44 & -0.44 & -0.51 to -0.38 & -12.95 &  $<$  0.001 \\ 
+Supervised (free choice) : b & -0.32 & -0.32 & -0.39 to -0.25 & -9.29 &  $<$  0.001 \\ 
+Supervised (target skill) : b & -0.45 & -0.45 & -0.51 to -0.38 & -13.56 &  $<$  0.001 \\ 
+Reinforcement learning : c & -0.22 & -0.22 & -0.29 to -0.15 & -6.39 &  $<$  0.001 \\ 
+Supervised (free choice) : c & -0.16 & -0.16 & -0.23 to -0.10 & -4.80 &  $<$  0.001 \\ 
+Supervised (target skill) : c & -0.22 & -0.22 & -0.28 to -0.15 & -6.53 &  $<$  0.001 \\ 
+Reinforcement learning : d & -0.44 & -0.44 & -0.51 to -0.38 & -12.87 &  $<$  0.001 \\ 
+Supervised (free choice) : d & -0.37 & -0.37 & -0.44 to -0.30 & -11.10 &  $<$  0.001 \\ 
+Supervised (target skill) : d & -0.45 & -0.45 & -0.52 to -0.39 & -13.65 &  $<$  0.001 \\ 
+sd(Intercept) & 0.52 & 0.52 &  &  &   \\ 
+sd(Intercept) & 0.20 & 0.20 &  &  &  \\ 
+sd(Observation) & 0.19 & 0.19 &  &  &   \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lmer(racingtime \textasciitilde{} treatment / strategy + (1 \textbar{} skigroup / skier)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
+\end{minipage}
+\clearpage
+
+
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}
+\caption*{
+{\large Strategy effect} \\ 
+{\small Estimated group difference on strategies during forced exploration}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\
+\midrule\addlinespace[2.5pt]
+(Intercept) & 16.88 & 16.88 & 16.56 to 17.20 & 147.94 &  $<$  0.001 \\ 
+b & -0.40 & -0.40 & -0.44 to -0.37 & -20.63 &  $<$  0.001 \\ 
+c & -0.20 & -0.20 & -0.24 to -0.16 & -10.22 &  $<$  0.001 \\ 
+d & -0.42 & -0.42 & -0.46 to -0.38 & -21.72 &  $<$  0.001 \\ 
+a : Supervised (free choice) & -0.01 & -0.01 & -0.28 to 0.26 & -0.07 &  =  0.945 \\ 
+b : Supervised (free choice) & 0.12 & 0.12 & -0.15 to 0.39 & 0.87 &  =  0.386 \\ 
+c : Supervised (free choice) & 0.05 & 0.05 & -0.22 to 0.32 & 0.36 &  =  0.716 \\ 
+d : Supervised (free choice) & 0.06 & 0.06 & -0.20 to 0.33 & 0.48 &  =  0.632 \\ 
+a : Supervised (target skill) & 0.17 & 0.17 & -0.09 to 0.44 & 1.28 &  =  0.203 \\ 
+b : Supervised (target skill) & 0.17 & 0.17 & -0.10 to 0.44 & 1.26 &  =  0.209 \\ 
+c : Supervised (target skill) & 0.18 & 0.18 & -0.09 to 0.45 & 1.33 &  =  0.188 \\ 
+d : Supervised (target skill) & 0.16 & 0.16 & -0.11 to 0.43 & 1.21 &  =  0.231 \\ 
+sd(Intercept) & 0.52 & 0.52 &  &  &  &  \\ 
+sd(Intercept) & 0.20 & 0.20 &  &  &  &  \\ 
+sd(Observation) & 0.19 & 0.19 &  &  &  &  \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lmer(racingtime \textasciitilde{}  strategy / treatment + (1 \textbar{} skigroup/skier)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
+\end{minipage}
+\clearpage
+
+
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}
+\caption*{
+{\large Strategy effect} \\ 
+{\small Estimated slope difference for strategies between treatment groups}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\
+\midrule\addlinespace[2.5pt]
+(Intercept) & 16.80 & 16.80 & 16.48 to 17.12 & 146.23 &  $<$  0.001 \\ 
+b & -0.44 & -0.44 & -0.48 to -0.40 & -20.15 &  $<$  0.001 \\ 
+c & -0.21 & -0.21 & -0.25 to -0.16 & -8.82 &  $<$  0.001 \\ 
+d & -0.45 & -0.45 & -0.50 to -0.41 & -21.04 &  $<$  0.001 \\ 
+Session number & -0.09 & -0.09 & -0.10 to -0.07 & -9.99 &  $<$  0.001 \\ 
+a : Supervised (free choice) & -0.02 & -0.02 & -0.30 to 0.25 & -0.17 &  =  0.866 \\ 
+b : Supervised (free choice) & 0.15 & 0.15 & -0.12 to 0.42 & 1.12 &  =  0.268 \\ 
+c : Supervised (free choice) & 0.05 & 0.05 & -0.23 to 0.32 & 0.33 &  =  0.740 \\ 
+d : Supervised (free choice) & 0.06 & 0.06 & -0.21 to 0.33 & 0.45 &  =  0.653 \\ 
+b : Session number & -0.06 & -0.06 & -0.12 to 0.00 & -1.98 &  =  0.047 \\ 
+c : Session number & -0.09 & -0.09 & -0.16 to -0.03 & -2.78 &  =  0.005 \\ 
+d : Session number & -0.07 & -0.07 & -0.13 to -0.01 & -2.44 &  =  0.015 \\ 
+a : Supervised (free choice) : Session number & -0.08 & -0.08 & -0.19 to 0.03 & -1.40 &  =  0.163 \\ 
+b : Supervised (free choice) : Session number & 0.04 & 0.04 & 0.01 to 0.07 & 2.34 &  =  0.020 \\ 
+c : Supervised (free choice) : Session number & -0.01 & -0.01 & -0.07 to 0.06 & -0.23 &  =  0.819 \\ 
+d : Supervised (free choice) : Session number & 0.00 & 0.00 & -0.03 to 0.03 & 0.20 &  =  0.842 \\ 
+sd(Intercept) & 0.52 & 0.52 &  &  &  & \\ 
+sd(Intercept) & 0.19 & 0.19 &  &  &  & \\ 
+sd(Observation) & 0.19 & 0.19 &  &  &  & \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lmer(racingtime \textasciitilde{} strategy / treatment * session number + (1 \textbar{} skigroup/skier)\\
+Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
+\end{minipage}
+\clearpage
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrl}
+\caption*{
+{\large Strategy effect} \\ 
+{\small Estimated improvement across sessions for "extend with rock skis forward" for the treatment groups}
+} \\ 
+\toprule
+Predictors & Estimates & SE & CI & t & p \\
+\midrule\addlinespace[2.5pt]
+(Intercept) & 16.59 & 16.59 & 16.20 to 16.98 & 101.76 &  $<$ 0.001 \\ 
+Supervised (free choice) & 0.08 & 0.08 & -0.18 to 0.35 & 0.64 &  =  0.522 \\ 
+Supervised (target skill) & 0.06 & 0.06 & -0.20 to 0.32 & 0.44 &  =  0.660 \\ 
+Reinforcement learning : Session number & -0.09 & -0.09 & -0.11 to -0.07 & -8.15 &  $<$  0.001 \\ 
+Supervised (free choice) : Session number & -0.10 & -0.10 & -0.11 to -0.08 & -10.01 &  $<$  0.001 \\ 
+Supervised (target skill) : Session number & -0.08 & -0.08 & -0.09 to -0.06 & -9.25 &  $<$  0.001 \\ 
+sd(Intercept) & 0.51 & 0.51 &  &  &  &  \\ 
+sd(Intercept) & 0.27 & 0.27 &  &  &  &  \\ 
+sd(Observation) & 0.18 & 0.18 &  &  &  &  \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+Formula: lmer(racingtime \textasciitilde{} treatment / session number  + (1  \textbar{} skigroup / skier)\\
+\end{minipage}
+
+\section{Supplementary discussion}\label{supdiscussion}
+To convert race time to FIS World Ranking, we assumed that each second corresponded to a 7-point FIS. We could then multiply by 0.12 * 7 to find the difference in FIS points. Then, we used the median rank in our sample and calculated what this difference corresponded to in the World Ranking. We performed this analysis for both females and men. Due to confidentiality, we do not want to say which FIS list we used for this conversion. If the reader thinks 7 points is too small or large, then we welcome the reader to change this number up or down. We only used this conversion to help readers evaluating the effect. 
+
+
+
+
+
+
+
+
 
 %%=============================================%%
 %% For submissions to Nature Portfolio Journals %%
