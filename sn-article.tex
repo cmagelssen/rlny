@@ -98,7 +98,7 @@
 
 \begin{document}
 
-\title[Article Title]{Reinforcement learning accelerates expertise in skilled alpine ski racers compared to standard coaching}
+\title[Article Title]{Reinforcement learning improves skill learning in skilled alpine ski racers compared to standard coaching}
 
 %%=============================================================%%
 %% GivenName	-> \fnm{Joergen W.}
@@ -203,7 +203,8 @@ We managed to recruit ten alpine ski teams comprising 98 alpine ski racers from 
 We also recruited 11 coaches (2 women; 6 men) to serve as coaches for the supervised learning groups. This selection was pragmatic because it was not possible to test all ski teams simultaneously due to space and time constraints in the skill hall. The 10 ski teams were therefore divided into 4 groups for which the study was conducted at different times. For each of the four groups, we recruited two coaches from the ski teams to serve as coaches in the supervised (free choice) learning group, totaling 8 coaches (2 women; 6 men). These coaches had extensive coaching experience in coaching alpine ski racers. In addition, for each group of ski teams that completed the experiment together, we recruited a third coach to coach the skiers in supervised (target skill) learning. To ensure that these coaches had sufficient credibility to make the skiers buy into our theoretical best strategy, we selectively recruited three highly experienced coaches from the Norwegian alpine ski team (one coach had to serve twice due to illness of the fourth coach). Importantly, all the coaches remained unaware of the experimental manipulation. Table \ref{descriptive_coach} provides demographic information about the coaches. All the skiers and coaches provided informed consent before the study. The study was approved by the Human Research Ethics Committee of The Norwegian School of Sport Sciences.
 
 
-\begin{sidewaystable}\label{descriptive_skier}
+\begin{sidewaystable}
+\label{descriptive_skier}
 \caption{\textbf{Skier characteristics}}
 \centering
 \begin{tabular}[H]{l|c|c|c|c|c|c}
@@ -343,14 +344,11 @@ To analyze the strategies' rankings, we used single-level linear regression owin
 \subsection{Race time}\label{result_racetime}
 We posited that strategy choice would greatly impact race time in the slalom course and that the reinforcement learning group would learn to select better strategies and consequently perform better over the course of the experiment compared to the two supervised learning groups. As our first step in the analysis, we assessed whether there were pure time differences between the groups across the different sessions without taking the chosen strategy into account. 
 
-If reinforcement learning were to learn to select better strategies, we would expect to observe differences in improvement among the three learning groups over the course of the three acquisition sessions. Therefore, our hypothesis was that the reinforcement learning group would improve more during the acquisition sessions than the two supervised learning groups. Initially, we found no statistically significant differences between the reinforcement learning group and the supervised (free choice) learning group ($\beta$ = 0.06 , 95\% CI [-0.2, 0.32], $t$(92.727) = 0.48, $p$ = 0.631) ) or between the supervised (target skill) learning group ($\beta$ = 0.18, 95\% CI[-0.08, 0.44], $t$(92.663) = 1.37, $p$ = 0.174) during the first acquisition session (forced exploration). This finding was expected, however, since all groups had the same number of trials on each strategy in this session. By contrast, we would expect differences in improvement over the course of the second (free choice 1) and third (free choice 2) acquisition session, when the skiers or the coach had the autonomy to pick strategy. We found that all treatment groups significantly improved their race times over the course of the free choice sessions during acquisition (Supplementary Table \ref{suptable_racetime_changepergroup}), suggesting that the choice of strategy influenced the race time. The rate at which they improved, however, differed across the three groups during the two sessions: supervised (target skill) learning showed a statistically significant greater improvement than reinforcement learning from forced exploration to free choice 1 when skiers were solely coached to select the theoretically best strategy ($\beta$ = -0.12, 95\% CI[-0.22, -0.03], $t$(91.777) = -2.58, $p$ = 0.012). Conversely, supervised (free choice) learning demonstrated a descriptively poorer progression than reinforcement learning, albeit the difference was not statistically significant ($\beta$ = 0.08, 95\% CI[-0.02, 0.17], $t$(92.5) = 1.61, $p$ = 0.110). This difference, however, became significant by the final acquisition session (Free Choice 2) ($\beta$ = 0.14, 95\% CI[0.02, 0.26], $t$(95.743) = 2.26, $p$ = 0.026). Supervised (target skill) learning showed a descriptive decline from Free Choice 1 to Free Choice 2, attenuating that their initially greater improvement rate relative to reinforcement learning became statistically nonsignificant  ($\beta$ = 0.02, 95\% CI[-0.11, 0.14], $t$(95.651) = 0.26, $p$ = 0.798). We did not, however, find statistical evidence that reinforcement learning performed better than supervised (free choice) or supervised (target skill) learning at Free Choice 1 or Free Choice 2 (Supplementary Table \ref{suptable_racetime_groupdiffeachsession}). 
+If reinforcement learning were to learn to select better strategies, we would expect to observe differences in improvement among the three learning groups over the course of the three acquisition sessions. Therefore, our hypothesis was that the reinforcement learning group would improve more during the acquisition sessions than the two supervised learning groups. Initially, we found no statistically significant differences between the reinforcement learning group and the supervised (free choice) learning group ($\beta$ = 0.06 , 95\% CI [-0.2, 0.32], $t$(92.727) = 0.48, $p$ = 0.631) ) or between the supervised (target skill) learning group ($\beta$ = 0.18, 95\% CI[-0.08, 0.44], $t$(92.663) = 1.37, $p$ = 0.174) during the first acquisition session (forced exploration). This finding was expected, however, since all groups had the same number of trials on each strategy in this session. By contrast, we would expect differences in improvement over the course of the second (free choice 1) and third (free choice 2) acquisition session, when the skiers or the coach had the autonomy to pick strategy. We found that all treatment groups significantly improved their race times over the course of the free choice sessions during acquisition (Supplementary Table \ref{table_racetime_acquisition_change}), suggesting that the choice of strategy influenced the race time. The rate at which they improved, however, differed across the three groups during the two sessions: supervised (target skill) learning showed a statistically significant greater improvement than reinforcement learning from forced exploration to free choice 1 when skiers were solely coached to select the theoretically best strategy ($\beta$ = -0.12, 95\% CI[-0.22, -0.03], $t$(91.777) = -2.58, $p$ = 0.012). Conversely, supervised (free choice) learning demonstrated a descriptively poorer progression than reinforcement learning, albeit the difference was not statistically significant ($\beta$ = 0.08, 95\% CI[-0.02, 0.17], $t$(92.5) = 1.61, $p$ = 0.110). This difference, however, became significant by the final acquisition session (Free Choice 2) ($\beta$ = 0.14, 95\% CI[0.02, 0.26], $t$(95.743) = 2.26, $p$ = 0.026). Supervised (target skill) learning showed a descriptive decline from Free Choice 1 to Free Choice 2, attenuating that their initially greater improvement rate relative to reinforcement learning became statistically nonsignificant  ($\beta$ = 0.02, 95\% CI[-0.11, 0.14], $t$(95.651) = 0.26, $p$ = 0.798). We did not, however, find statistical evidence that reinforcement learning performed better than supervised (free choice) or supervised (target skill) learning at Free Choice 1 or Free Choice 2 (Supplementary Table \ref{table_racetime_acquisition_groupdifference}). 
 
 In the retention session, skiers independently chose their strategies, irrespective of their assigned groups.  Our hypothesis was that reinforcement learning would outperform the two supervised learning groups in retention due to better strategy selection learned from observing the race times to evaluate the strategies . Fig. \ref{fig: racetime}b presents the mean race time estimates during retention. We found that the race times for the reinforcement learning group were on average significantly better than those for supervised (free choice) learning, when controlling for baseline differences ($\beta$ = 0.12, 95\% CI[0.01, 0.24], $t$(101.422) = 2.12, $p$ = 0.037). The difference between reinforcement learning and supervised learning (target skill) also favored reinforcement learning but was smaller and not statistically significant ($\beta$ = 0.07, 95\% CI[ -0.04, 0.19], $t$(101.63) = 1.27, $p$ = 0.206). We therefore provide evidence that reinforcement learning performed better at retention than supervised (free choice) learning but not significantly better than supervised (target skill) learning. 
 
 We also hypothesized that reinforcement learning would improved skill transfer to a new slalom course. Fig. \ref{fig: racetime}c presents the mean race time estimates during Transfer. As for retention, the race time on the transfer course was on average better in reinforcement learning than in supervised (free choice), yet the difference was smaller and not statistically significant, when controlling for baseline differences ($\beta$ = 0.1, 95\% CI[-0.02, 0.21], $t$( 99.979) = 1.7, $p$  = 0.091). The race times for reinforcement learning and supervised (target skill) learning was on average identical when controlling for baseline differences ($\beta$ = 0, 95\% CI[-0.12, 0.11], $t$(100.033) = -0.04, $p$ = 0.967). Thus, we did not find corroborating evidence for improved transfer.
-
-
-
 
 
 
@@ -362,82 +360,41 @@ We also hypothesized that reinforcement learning would improved skill transfer t
 \end{figure}
 
 
-
-
-
 \subsection{Strategy choices}\label{result_strategychoice}
-Our proposed explanation for the time differences between the groups is that they were linked to the choice of strategy. Specifically, we hypothesized that reinforcement learning would learn to choose better strategies than supervised learning groups because they could learn the values of the strategies by directly observing the race times. Fig. \ref{fig: choice_descriptives} displays the percentage selections of the four strategies across all sessions.
-
-We first assumed that our theoretically defined best strategy was indeed the best strategy and tested whether reinforcement learning had a greater probability of selecting this strategy than supervised (free choice) learning. Note that supervised (target skill) learning was excluded from this analysis because only this strategy was selected. Fig. \ref{fig: choice_estimated}a  displays the predicted probabilities for the treatment groups across the sessions. No statistically significant differences were observed between reinforcement learning and supervised (free choice) learning in choosing this strategy during free choice 1. In addition, there was no statistically significant increase in the probability of choosing this strategy from free choice 1 to free choice 2, nor was there a greater increase in probability in supervised (free choice) learning. When skiers in supervised (free choice) learning were permitted to make their own strategy decisions during retention, we found a statistically significant increase in the probability of choosing this strategy, however. This increase was significantly greater in supervised (free choice) than in reinforcement learning, for which there was no significant increase. On the transfer test, however, reinforcement learning also increased the probability of choosing this strategy. We did not find evidence of a statistically significant difference between groups at any of the sessions.
-
-The previous analysis revealed no evidence that the predicted probability of choosing the theoretical best strategy was greater in the reinforcement learning group than in the supervised (free choice) learning group. In contrast, supervised (free choice) learning had the descriptively greatest probability of choosing the theoretical best strategy. We therefore wondered whether there was a greater proportion of skiers in the supervised (free choice) learning group whose theoretically best strategy corresponded to their own estimated best strategy, and we performed a follow-up analysis to test this possibility. Fig.\ref{fig: choice_estimated}b shows the proportion of skiers for each group that had the theoretical best strategy as their estimated best strategy. We found that only 40\% of the skiers in reinforcement learning had the theoretically best strategy as their estimated best strategy compared to 75\% in the supervised (free choice) learning group. A chi-square test revealed a statistically significant association between groups $\chi^2$ = 6.42, $p$ = 0.01). Because all skiers in the supervised (target skill) group had the theoretical best as their estimated best strategy, we did not include this group in this test.
-
-Our defined theoretical best strategy may not necessarily have been the best strategy for each individual skier, however. We therefore tested whether reinforcement learning had a greater probability of selecting the individual skiers' estimated best strategy.  Fig. \ref{fig: choice_estimated}c displays the predicted probabilities of choosing the estimated best strategy for the treatment groups across the sessions. In free choice 1, the predicted probability difference between the groups was small and not statistically significant (0.01, 95\% CI [-0.22, 0.24], $z$ = 0.12, $p$ = 0.904). In free choice 2, the predicted probability of choosing the estimated best strategy significantly increased for the reinforcement learning group (0.2, 95\% CI [0.09, 0.32], $z$ = 3.39, $p$  $<$ 0.001), but not for the supervised (free choice) learning group (0.09, 95\% CI [-0.03, 0.21], $z$ = 1.48, $p$ = 0.140). The greater increase in probability of choosing this strategy in reinforcement learning was not significant, however (0.11, 95\% CI [-0.28, 0.05], $z$ = -1.33, $p$ = 0.184). When skiers in the supervised (free choice) learning group were given the freedom to choose strategies on retention, their predicted probabilities of choosing their estimated best strategy also significantly increased relative to free choice 1 ($\beta$ = 0.12, 95\% CI [0, 0.24], $z$ = 1.88, $p$ = 0.060). 
-
-Choosing the estimated best strategy is one thing, but avoiding the selection of a strategy significantly worse than the estimated best strategy is another. In a follow-up analysis, we computed the expected difference between the skiers' chosen suboptimal strategy and their estimated best strategy, which we referred to as 'cost.' A lower cost implies that the performer has better grasped the effects of various strategies. This analysis revealed that reinforcement learning had lower costs than supervised (free choice) learning did  ($\beta$ = 0.06 , 95\% CI [ 0.01 ,  0.12 ], $t$( 30.789 ) = 2.55 , $p$  =  0.016), suggesting that they had better learned the strategies.
-
-To test the extent to which coaches in supervised (free choice) learning and skiers in reinforcement learning utilized trial feedback to make decisions, we conducted a 'win-stay, lose-switch' (WSLS) analysis. In this analysis, heightened sensitivity is indicated by a high predicted probability of repeating an action following good feedback and a low predicted probability following bad feedback on a previous trial.
-
-Figure \ref{fig: choice_wsls} shows the predicted probability of repeating the strategy on the previous trial if the feedback was good. We found statistically significant estimated marginal effects at the mean (MEM) for both reinforcement learning  ($\beta$ = -0.18, 95\% CI[-0.26, -0.11], $z$ = -4.8,$p$ < 0.001) and supervised (free choice) learning ($\beta$ = -0.11 , 95\% CI [ -0.17 ,  -0.04 ], $z$ = -3.29 , $p$  <  0.001). These findings suggest that both groups had a higher predicted probability of repeating a strategy if the previous trial feedback was good. Despite the large descriptive difference in the marginal effect between groups, this difference was not statistically  significant ($\beta$ = -0.08, 95\% CI [-0.17, 0.02], $z$ = -1.55, $p$ $=$ 0.121).
-
-
-
-
-
-
-
-
-
-
+We proposed that the differences in race time between the groups could be explained by the choice of strategy. Specifically, we hypothesized that reinforcement learning would learn to choose better strategies than supervised learning groups by learning the strategies' values directly from observing race times. Fig. \ref{fig: choice_descriptives} displays the percentage selections of the four strategies across all sessions.
 
 
 \begin{figure}[H]
 \centering
 \includegraphics{figures/figure_choice_descriptivecount_4.pdf}
-\caption{Strategy choices for skiers in each session, with bars indicating percentages and the numbers to the right of the bars showing the total count for
-each strategy. Data has been aggregated from our multi-level structure for clarity}\label{fig: choice_descriptives}
+\caption{Descriptive strategy choices for skiers in each session, with bars indicating percentages and the numbers to the right of the bars showing the total count for
+each strategy}\label{fig: choice_descriptives}
 \end{figure}
 
 
+We first assumed that our theoretically defined best strategy was indeed the best strategy and tested whether reinforcement learning had a greater probability of selecting this strategy than supervised (free choice) learning. Note that supervised (target skill) learning was excluded from this analysis because only this strategy was selected. Fig. \ref{fig: choice_estimated}a displays the predicted probabilities for the treatment groups across the four sessions where the skiers or coaches were given autonomy to select strategy themselves. We found that both groups showed a statistically significant increase in the probability of choosing the strategy we considered theoretically optimal across the four sessions (Supplementary Table \ref{strategychoice_theorybest_change}); however, the timing of this increase differed between the two groups. For supervised (free choice) learning we found a statistically significant increase from free choice 1 to retention, when skiers in this group were given autonomy to choose strategies themselves (0.31, 95\% CI[0.18, 0.44], $z$ = 4.59, $p$ < 0.001). This probability increase was significantly greater than the increase for reinforcement learning (0.24, 95\% CI[0.05, 0.43], $z$ = 2.43 , $p$ = 0.015), which did not significantly increase from free choice 1 (0.07, 95\% CI[-0.07, 0.21], $z$ = 0.96, $p$ = 0.339). Reinforcement learning, on the other hand, significantly increased the probability of choosing the theoretically best strategy in the transfer session relative to free choice 1 (0.18, 95\%CI[0.04, 0.32], $z$ = 2.58, $p$ = 0.010). Despite the descriptively higher probability of choosing the theoretical best strategy in supervised (free choice) learning during the free choice 2, retention and transfer sessions, none of the differences between the groups at each session were statistically significant (Supplementary Table \ref{strategychoice_theorybest_groupdiff}). 
 
+\begin{figure}[H]
+\centering
+\includegraphics{figures/figure_choice_estimated_4.pdf}
+\caption{Strategy selection for reinforcement learning (pink) and supervised (free choice) learning (blue) during acquisition. \textbf{a.} Displays the predicted probability of choosing the theoretically best strategy (that is, 'extend with rocking skis forward') for both reinforcement learning and supervised (free choice) learning. \textbf{b.} Displays the predicted probability of selecting the individual skier's estimated best strategy using the sampling averaging method\cite{sutton_reinforcement_2018}. Intervals represent the 95\% confidence intervals (CIs) derived from the models. Asterisks (*) indicate a statistically significant effect}\label{fig: choice_estimated}
+\end{figure}
 
+The previous analysis revealed no evidence of a higher probability of selecting what we defined as the theoretically optimal strategy in reinforcement learning. Instead, the descriptive trend favored supervised (free choice) learning. We therefore wondered whether there was a greater proportion of skiers in the supervised (free choice) learning group whose theoretically best strategy corresponded to their own estimated best strategy, and performed a follow-up analysis to test this possibility. Fig.\ref{fig: choice_estimated}b shows the proportion of skiers for each group that had the theoretical best strategy as their estimated best strategy. Overall, 75\% of the skiers in supervised (free choice) learning had the theoretically best strategy as their estimated best strategy compared to only 40\% in the reinforcement learning group. A chi-square test revealed a statistically significant association between groups $\chi^2$ = 6.42, $p$ = 0.01). Because all skiers in the supervised (target skill) group had the theoretical best as their estimated best strategy (see Fig.\ref{fig: choice_estimated}b), they could not be included in this analysis. More skiers in the supervised (free choice) learning group had the theoretically best strategy as their estimated best strategy, which can explain why they had a descriptively higher probability of choosing it compared to reinforcement learning.
 
+What we defined as the theoretical best strategy may not have been the optimal strategy for each individual skier, however. Next, we tested whether reinforcement learning had a greater probability of selecting the individual skiers' estimated best strategy.  Fig. \ref{fig: choice_estimated}c displays the predicted probabilities of choosing the estimated best strategy for the treatment groups across the sessions. During the first session, in which we allowed skiers and coaches to choose their own strategies (free choice 1),  we found no statistically significant differences between the groups (0.01, 95\% CI[-0.22, 0.24], $z$ = 0.12, $p$ = 0.904). Both groups significantly improved their choices over the course of the sessions relative to free choice 1 (Supplementary table \ref{table_strategychoice_estimatedbest_change}), but the significant improvement came at different time points. We found a statistically significant improvement in choice for reinforcement learning from free choice 1 to free choice 2 (0.2, 95\% CI[0.09, 0.32], $z$ = 3.39, $p$ < 0.001), which was not statistically significant for supervised (free choice) learning (0.09, 95\% CI[-0.03, 0.21], $z$ = 1.48, $p$ = 0.140). However, the greater increase in the probability of choosing this strategy in reinforcement learning was not significant (0.11, 95\% CI [-0.28, 0.05], $z$ = -1.33, $p$ = 0.184). For supervised (free choice) learning we found a statistically significant improvement in their choices when the skiers made their own strategy choices during retention (0.21, 95\% CI[0.08, 0.34], $z$ = 3.11 , $p$  =  0.002). We found no statistically significant differences between the groups in any of the sessions (Supplementary table \ref{table_strategychoice_estimatedbest_groupdiff} ). We therefore did not find corroborating evidence that reinforcement learning learned to pick the best strategy more often than supervised (free choice) learning. 
 
+Making good choices can extend beyond the mere selection of an optimal strategy, however. At times, multiple strategies yield outcomes that are closely similar, affording the learner to choose any without compromising performance. The task then becomes one of selecting strategies that offer comparable outcomes while avoiding those that carry the risk of substantially worse performance. We reasoned that discerning differences between fairly similar strategies could be tricky for skiers due to small time differentials that are influenced by noise, such as hitting a bump in a gate. Consequently, two or more strategies may appear nearly identical and be difficult for skiers to distinguish. We reasoned that reinforcement learning had learned to select good strategies that all led to nearly similar good outcomes and learned to steer away from those that led to poor outcomes. In a follow-up analysis, we calculated the expected difference between a skier's chosen suboptimal strategy and their estimated best strategy, which we termed 'cost.' This analysis revealed that reinforcement learning had significantly lower costs during retention than supervised (free choice) learning did  ($\beta$ = 0.06 , 95\% CI [0.01, 0.12], $t$(30.789) = 2.55 , $p$ = 0.016). This suggests that skiers in the reinforcement learning group may have learned to select better strategies, although we did not find evidence that they had a greater probability of picking the best strategy.
 
- 
-\setlength{\LTpost}{0mm}
-\begin{longtable}{ccrrrrrrl}
-\caption*{
-{\large Strategy selection} \\ 
-{\small Predicted probability difference between groups}
-} \\ 
-\toprule
-contrast & session & estimate & std.error & df & conf.low & conf.high & statistic & p.value \\ 
-\midrule\addlinespace[2.5pt]
-rl - slfc & block2 & 0.01 & 0.13 & Inf & -0.24 & 0.27 & 0.11 &  =  0.911 \\ 
-rl - slfc & block3 & -0.05 & 0.13 & Inf & -0.31 & 0.20 & -0.39 &  =  0.693 \\ 
-rl - slfc & retention & -0.23 & 0.13 & Inf & -0.48 & 0.03 & -1.75 &  =  0.079 \\ 
-rl - slfc & transfer & -0.17 & 0.12 & Inf & -0.40 & 0.07 & -1.41 &  =  0.159 \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: glmer(chose\_theoretical\_best \textasciitilde{} treatment * session + (1 \textbar{} skigroup/skier)\\
-\end{minipage}
+Finally, we examined the extent to which decision-makers (skiers in reinforcement learning and coaches in supervised learning) engaged with their feedback times to inform decisions about which strategy to adopt. Our hypothesis was that, compared with coaches, reinforcement learning would engage more actively with these race times to make optimal choices. To test this hypothesis, we conducted a 'win-stay, lose-switch' (WSLS) analysis, where the primary assumption is that all information used for decision-making stems from the last trial (k-1). In this analysis, heightened sensitivity is reflected by a high predicted probability of repeating an action following positive feedback and a low predicted probability following negative feedback on the preceding trial. Figure \ref{fig: choice_wsls} shows the predicted probability of repeating the strategy on the previous trial if the feedback was good. We found statistically significant estimated marginal effects at the mean (MEM) for both reinforcement learning  (-0.18, 95\% CI[-0.26, -0.11], $z$ = -4.8, $p$ < 0.001) and supervised (free choice) learning (-0.11, 95\% CI[-0.17, -0.04], $z$ = -3.29, $p$ $<$ 0.001). These findings suggest that both groups had a higher predicted probability of repeating a strategy if the previous trial feedback was good. Despite the large descriptive difference in the marginal effect between groups, this difference was not statistically  significant (-0.08, 95\% CI [-0.17, 0.02], $z$ = -1.55, $p$ $=$ 0.121). Thus, although we found that both groups were sensitive to feedback, we did not find evidence that reinforcement learning had greater sensitivity than supervised (free choice) learning. 
 
+\subsection{Strategy evaluations and outcomes}
+We also asked the skiers and the coaches (excluding coaches for supervised (target skill) learning) to evaluate the strategies by ranking them from best (1) to worst (4), first upon their introduction (familiarization) and then after each session. Through the evaluations from the skiers and coaches, we gained deeper insight into their understanding and learning of the effects of the strategies, which underpinned their choice of strategy. Our hypothesis was that reinforcement learning would result in a different evaluation trajectory of the strategies compared to the supervised learning groups because they had continuous access to the race times. These evaluations should also be consistent with the times for each strategy. Therefore, we also tested whether the different groups showed different progressions with the various strategies.
 
+After the introduction to the strategies, but before the skiers had the chance to properly try out the strategies on the slalom course (familiarization), we found that the decision maker in all groups ranked 'extend with rock skis forward' as the best, followed by 'extend,' 'rock skis forward,' and 'stand against'. We did not find any statistical significant difference between groups during this familiarization (Supplementary Table), with one important exception: supervised (target skill) learning ranked 'extend' worse ($\beta$ = 0.45, 95\% CI[0.24,  0.67], $t$(1700) = 4.17, $p$ $<$ 0.001) and 'extend with rock skis forward' better  ($\beta$ = -0.42, 95\% CI[-0.63, -0.2], $t$(1700) = -3.83, $p$ $<$ 0.001) than reinforcement learning did.
 
-\subsection{Larger cognitive separation of strategies in the reinforcement and supervised (free choice) learning than in supervised (target skill) learning}\label{subsec4}
+Over the course of the sessions, we observed notable shifts in the average rankings of the strategies. The change was relatively flat and unchanged in terms of position for the worst ('stand against') and best ('extend with rock skis forward') strategies. However, we found that 'stand against' was ranked significantly worse ($\beta$ = 0.09, 95\% CI[0.04, 0.13], $t$(1700) = 3.4, $p$ $<$ 0.001)  and that 'extend with rock skis forward' was ranked significantly better ($\beta$ = -0.06 , 95\% CI[-0.11, -0.01], $t$(1700) = -2.51, $p$ = 0.012) over time in supervised (target skill) learning. Although reinforcement learning and supervised (free choice) learning followed the same trend, these trends were not statistically significant. More marked shifts were observed for the two middle-ranked strategies: 'extend' and 'rock skis forward'. Specifically, reinforcement learning ranked 'extend' significantly better  ($\beta$ = -0.1, 95\% CI[-0.15, -0.05], $t$(1700) = -3.73, $p$ < 0.001) and 'rock skis forward' significantly worse ($\beta$ = 0.09, 95\% CI [0.04, 0.15], $t$(1700) = 3.57, $p$ < 0.001) over the course of the sessions. Supervised (target skill) and supervised (free choice) also had the same trend, but the magnitude was smaller and did not reach statistical significance (Suppl table). We also found that there was a greater change in ranking of 'rock skis forward' in reinforcement learning group than in supervised (target skill) learning  ($\beta$ = -0.07, 95\% CI[-0.14 to 0], $t$(1700) = -1.97,$p$ = 0.049), suggesting a larger shift in strategy ranking for this ranking in reinforcement learning.  
 
-
-
-
-Directly reflecting their understanding of the effectiveness of strategies is how skiers or coaches evaluate them. We expected that these evaluations would diverge among the treatment groups and that reinforcement learning would have achieved a more consistent evaluation with their actual race times. Figure \ref{fig: rank}a displays the rankings for individuals with the authority  to choose strategies across all sessions, except for supervised (target skill) learning, where the skiers' rankings are shown because these coaches were informed ahead of the experiment about which strategies were expected to be the best. 
-
-As shown in Figure \ref{fig: rank}a and in supplementary table \ref{suptable_strategyranking_strategydifffam}, all treatment groups initially ranked 'extend with rock skis forward' as the best, followed by 'extend,' 'rock skis forward,' and 'stand against' immediately after the strategies' introduction during the familiarization phase. We did not find statistically significant differences in ranking between reinforcement learning and the two supervised learning groups for the strategies (Supplementary Table \ref{suptable_strategyranking_diffgroupfam}), except that supervised (target skill) learning ranked 'extend' worse ($\beta$ = 0.45, 95\% CI[0.24,  0.67], $t$(1700) = 4.17, $p$ $<$ 0.001) and 'extend with rock skis forward' better  ($\beta$ = -0.42, 95\% CI[-0.63, -0.2], $t$(1700) = -3.83, $p$ $<$ 0.001) than reinforcement learning did.
-
-The data depicted in the figure and the regression model reported in supplementary table \ref{suptable_strategyranking_strategiesslope} indicate that the positional ranks for the strategies "stand against" and "extend with rock skis forward" remained stable throughout all sessions across the treatment groups, yet there were some interesting trends. The rank of 'stand against' descriptively worsened over the sessions for all groups, but the change was only statistically significant for the supervised (target skill) learning group  ($\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.13 ], $t$(1700) = 3.4 , $p$  $<$  0.001). In contrast, the 'extend with rock skis forward' strategy was ranked better over the sessions for all groups. However, the change was only statistically significant for the supervised (target skill) learning group ($\beta$ = -0.06 , 95\% CI[-0.11, -0.01], $t$(1700) = -2.51, $p$ = 0.012). 
-
-The most interesting trend shifts were observed for the two middle-ranked strategies: 'extend' and 'rock skis forward'. The reinforcement learning group ranked the strategy 'extend' better and 'rock skis forward' worse over the sessions, and these changes were found to be statistically significant (Extend: $\beta$ = -0.1 , 95\% CI [ -0.15 ,  -0.05 ], $t$(1700) = -3.73 , $p$  <  0.001; Rock skis forward:  $\beta$ = 0.09 , 95\% CI [ 0.04 ,  0.15 ], $t$(1700) = 3.57 , $p$  <  0.001). Although supervised (target skill) and supervised (free choice) exhibited the same trend, the magnitude was smaller and did not reach statistical significance. We also identified a statistically significant interaction effect between reinforcement learning and supervised (target skill) learning for the 'rock skis forward' strategy ($\beta$ = -0.07, 95\% CI[-0.14 to 0], $t$(1700) = -1.97,$p$ = 0.049), providing evidence that reinforcement learning learned to separate strategies better over time over time than the supervised (target skill) learning did. We did, however, not find other interaction effects (Supplementary table \ref{suptable_strategyranking_diffindiff_strategiesslope})) 
 
 
 \begin{figure}[H]
@@ -596,381 +553,183 @@ Once the 50-meter straight line was established, we laid out a rope segment atta
 Due to wear and tear on the trails, we opted to shift the course laterally or rotate it, depending on the situation. With the exception of one skiing group, we followed the following practice. On day 1, we set the course as described above. On day 2, we rotated the course so that the first turn went in the opposite direction of day 1. On the third day, we shifted the course closer to the wall on skiers' right (see figure \ref{fig:coursesetting}c for an image showing the tracks in the hill left after a skigroup had completed the experiment). 
 
 
+\section{Coach setup}
+We set up three coach stations in the finishing area for the supervised learning groups, one for each coach. The space between the coaches was approximately 3 to 5 meters. We used wall dividers to prevent information leakage between the coaches. In addition, the background noise in the ski hall was generally high, and it was difficult to perceive information without standing close to the person. The supervised (target skill) learning coach was behind the two other coaches to prevent the other coaches from seeing what he did. Each coach had a monitor where they could see their own (but not the other) skiers' race.
+
+
 \section{Supplementary Table}
 
 \subsection{Race time}
 
-
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_racetime_changepergroup}
-\caption*{
-{\large Race time} \\ 
-{\small SLopes}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.62 & 16.62 & 16.27 to 16.97 & 132.69 &  $<$  0.001 \\ 
-Supervised (free choice) & 0.14 & 0.14 & -0.12 to 0.39 & 1.04 & 0.299 \\ 
-Supervised (target skill)  & 0.14 & 0.14 & -0.12 to 0.40 & 1.10 & 0.276 \\ 
-Reinforcement learning : Free choice 1 & -0.38 & -0.38 & -0.45 to -0.31 & -10.82 &  $<$  0.001 \\ 
-Supervised (free choice) : Free choice 1 & -0.30 & -0.30 & -0.37 to -0.23 & -8.96 &  $<$  0.001 \\ 
-Supervised (target skill)  : Free choice 1 & -0.50 & -0.50 & -0.57 to -0.44 & -15.08 &  $<$  0.001 \\ 
-Reinforcement learning : Free choice 2 & -0.45 & -0.45 & -0.54 to -0.36 & -9.99 &  $<$  0.001 \\ 
-Supervised (free choice) : Free choice 2 & -0.31 & -0.31 & -0.39 to -0.22 & -7.17 &  $<$  0.001 \\ 
-Supervised (target skill)  : Free choice 2 & -0.43 & -0.43 & -0.52 to -0.35 & -10.07 &  $<$  0.001 \\ 
-sd(Intercept) & 0.51 & 0.51 &  &  &  &  \\ 
-cor(Intercept, Free choice 1) & -0.03 & -0.03 &  &  &  &  \\ 
-cor(Intercept, Free choice 2) & 0.23 & 0.23 &  &  &  &  \\ 
-sd(Free choice 1) & 0.15 & 0.15 & & & &  \\ 
-cor(Free choice 1, Free choice 2) & 0.73 & 0.73 & & & &  \\ 
-sd(Free choice 2) & 0.22 & 0.22 &  &  &  &  \\ 
-sd(Intercept) & 0.23 & 0.23 & &  &  &  \\ 
-sd(Observation) & 0.21 & 0.21 & & &  &  \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: racingtime \textasciitilde{} treatment / session + (1  \textbar{} skigroup) + (1 + session \textbar{} skigroup:skier)\\
-\end{minipage}
-
-\clearpage
+\begin{table}[h!]
+\caption{Race time: Estimated improvement across sessions in acquisition}\label{table_racetime_acquisition_change}
+\centering
+\begin{tabular}{lrrrrrrrr}
+  \hline
+ Term & Estimate & SE & df & CI & t & p \\ 
+  \hline
+ (Intercept) & 16.62 & 0.13 & 3.93 & 16.27-16.97 & 132.69 &  $<$  0.001 \\ 
+   supervised (free choice) & 0.14 & 0.13 & 85.83 & -0.12-0.39 & 1.04 &    0.299 \\ 
+   supervised (target skill) & 0.14 & 0.13 & 85.82 & -0.12-0.40 & 1.10 &    0.276 \\ 
+  reinforcement learning : free choice 1 & -0.38 & 0.03 & 91.63 & -0.45--0.31 & -10.82 &  $<$  0.001 \\ 
+   supervised (free choice) : free choice 1 & -0.30 & 0.03 & 93.47 & -0.37--0.23 & -8.96 &  $<$  0.001 \\ 
+   supervised (target skill) : free choice 1 & -0.50 & 0.03 & 91.95 & -0.57--0.44 & -15.08 &  $<$  0.001 \\ 
+   reinforcement learning : free choice 2 & -0.45 & 0.05 & 95.16 & -0.54--0.36 & -9.99 &  $<$  0.001 \\ 
+   supervised (free choice) : free choice 2 & -0.31 & 0.04 & 96.39 & -0.39--0.22 & -7.17 &  $<$  0.001 \\ 
+   supervised (target skill) : free choice 2 & -0.43 & 0.04 & 96.20 & -0.52--0.35 & -10.07 &  $<$  0.001 \\ 
+   sd(Intercept) & 0.51 &  &  &  &  &  &  \\ 
+   cor(Intercept,free choice 1) & -0.03 &  &  &  &  &  &  \\ 
+   cor(Intercept,free choice 2) & 0.23 &  &  &  &  &  &  \\ 
+   sd(free choice 1) & 0.15 &  &  &  &  &  &  \\ 
+   cor(free choice 1,free choice 2) & 0.73 &  &  &  &  &  &  \\ 
+  sd(free choice 2) & 0.22 &  &  &  &  &  &  \\ 
+   sd(Intercept) & 0.23 &  &  &  &  &  &  \\ 
+   sd(Observation) & 0.21 &  &  &  &  &  &  \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: racetime ~ treatment / session + (1 $|$skigroup) + (1 + session $|$ skigroup:skier)}
+\end{table}
 
 
-
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_racetime_groupdiffeachsession}
-\caption*{
-{\large Race time} \\ 
-{\small Difference between groups at each session}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.62 & 16.62 & 16.27 to 16.97 & 132.68 &  $<$ 0.001 \\ 
-session2 & -0.39 & -0.39 & -0.43 to -0.35 & -20.09 &  $<$  0.001 \\ 
-session3 & -0.40 & -0.40 & -0.45 to -0.35 & -15.74 &  $<$  0.001 \\ 
-sessionblock1 : treatment2 & 0.06 & 0.06 & -0.20 to 0.32 & 0.48 &  =  0.631 \\ 
-sessionblock2 : treatment2 & 0.14 & 0.14 & -0.11 to 0.39 & 1.11 &  =  0.272 \\ 
-sessionblock3 : treatment2 & 0.20 & 0.20 & -0.08 to 0.49 & 1.43 &  =  0.157 \\ 
-sessionblock1 : treatment3 & 0.18 & 0.18 & -0.08 to 0.44 & 1.37 &  =  0.174 \\ 
-sessionblock2 : treatment3 & 0.05 & 0.05 & -0.20 to 0.31 & 0.43 &  =  0.672 \\ 
-sessionblock3 : treatment3 & 0.19 & 0.19 & -0.09 to 0.48 & 1.37 &  =  0.176 \\ 
-sd\_\_(Intercept) & 0.51 & 0.51 & & & & \\ 
-cor\_\_(Intercept).session2 & -0.03 & -0.03 & & & & \\ 
-cor\_\_(Intercept).session3 & 0.23 & 0.23 & & & &  \\ 
-sd\_\_session2 & 0.15 & 0.15 & & & &  \\ 
-cor\_\_session2.session3 & 0.73 & 0.73 & & & & \\ 
-sd\_\_session3 & 0.22 & 0.22 & & & & \\ 
-sd\_\_(Intercept) & 0.23 & 0.23 & & & & \\ 
-sd\_\_Observation & 0.21 & 0.21 & & & & \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: racetime \textasciitilde{} session / treatment + (1  \textbar{} skigroup) + (1 + session \textbar{} skigroup:skier)\\
-\end{minipage}
+\begin{table}[h!]
+\caption{Race time: Estimated difference between groups during acquisition}\label{table_racetime_acquisition_groupdifference}
+\centering
+\begin{tabular}{lrrrrrrrr}
+  \hline
+ Term & Estimate & SE & df & CI & t & p \\ 
+  \hline
+ (Intercept) & 16.62 & 0.13 & 3.93 & 16.27-16.97 & 132.68 &  $<$  0.001 \\ 
+ free choice 1 & -0.39 & 0.02 & 92.32 & -0.43--0.35 & -20.09 &  $<$  0.001 \\ 
+  free choice 2 & -0.40 & 0.03 & 95.89 & -0.45--0.35 & -15.74 &  $<$  0.001 \\ 
+  forced exploration : supervised (free choice) & 0.06 & 0.13 & 92.73 & -0.20-0.32 & 0.48 &    0.631 \\ 
+  free choice 1 : supervised (free choice) & 0.14 & 0.13 & 86.15 & -0.11-0.39 & 1.11 &   0.272 \\ 
+  free choice 2 : supervised (free choice) & 0.20 & 0.14 & 78.00 & -0.08-0.49 & 1.43 &   0.157 \\ 
+  forced exploration : supervised (target skill) & 0.18 & 0.13 & 92.66 & -0.08-0.44 & 1.37 &   0.174 \\ 
+  free choice 1 : supervised (target skill) & 0.05 & 0.13 & 86.12 & -0.20-0.31 & 0.43 &   0.672 \\ 
+  free choice 2 : supervised (target skill) & 0.19 & 0.14 & 78.02 & -0.09-0.48 & 1.37 &   0.176 \\ 
+  sd(Intercept) & 0.51 &  &  &  &  &    \\ 
+  cor(Intercept).free choice 1 & -0.03 &  &  &  &  &    \\ 
+  cor(Intercept).free choice 2 & 0.23 &  &  &  &  &    \\ 
+  sd(free choice 1) & 0.15 &  &  &  &  &    \\ 
+  cor(free choice 1,free choice 2) & 0.73 &  &  &  &  &   \\ 
+  sd(free choice 2) & 0.22 &  &  &  &  &    \\ 
+  sd(Intercept) & 0.23 &  &  &  &  &   \\ 
+  sd(Observation) & 0.21 &  &  &  &   &  \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: racetime ~ session / treatment + (1 $|$skigroup) + (1 + session $|$ skigroup:skier)}
+\end{table}
 
 
 
-\subsubsection{Strategy ranking}\label{suptable_strategyranking}
-\clearpage
-
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_strategydifffam}
-\caption*{
-{\large Strategy ranking} \\ 
-{\small Estimated difference between strategies during familiarization}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$  0.001 \\ 
-Supervised (free choice) & 0.00 & 0.00 & -0.16 to 0.16 & 0.00 &  =  1.000 \\ 
-Supervised (target skill) & 0.00 & 0.00 & -0.11 to 0.11 & 0.00 &  =  1.000 \\ 
-Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
-Reinforcement learning : b & -1.72 & -1.72 & -1.94 to -1.50 & -15.47 &  $<$  0.001 \\ 
-Supervised (free choice) : b & -1.43 & -1.43 & -1.81 to -1.05 & -7.38 &  $<$  0.001 \\ 
-Supervised (target skill) : b & -1.20 & -1.20 & -1.41 to -0.99 & -11.32 &  $<$  0.001 \\ 
-Reinforcement learning : c & -1.05 & -1.05 & -1.27 to -0.83 & -9.42 &  $<$  0.001 \\ 
-Supervised (free choice) : c & -0.70 & -0.70 & -1.08 to -0.32 & -3.60 &  $<$  0.001 \\ 
-Supervised (target skill) : c & -0.95 & -0.95 & -1.16 to -0.74 & -8.94 &  $<$  0.001 \\ 
-Reinforcement learning : d & -2.06 & -2.06 & -2.28 to -1.84 & -18.49 &  $<$  0.001 \\ 
-Supervised (free choice) : d & -2.09 & -2.09 & -2.47 to -1.71 & -10.77 &  $<$  0.001 \\ 
-Supervised (target skill) : d & -2.41 & -2.41 & -2.61 to -2.20 & -22.67 &  $<$  0.001 \\ 
-Supervised (free choice) : Ranktime & 0.00 & 0.00 & -0.04 to 0.04 & 0.00 &  =  1.000 \\ 
-Supervised (target skill) : Ranktime & 0.00 & 0.00 & -0.04 to 0.04 & 0.00 &  =  1.000 \\ 
-Reinforcement learning : b : Ranktime & -0.15 & -0.15 & -0.22 to -0.07 & -3.95 &  $<$  0.001 \\ 
-Supervised (free choice): b : Ranktime & -0.12 & -0.12 & -0.22 to -0.02 & -2.45 &  =  0.014 \\ 
-Supervised (target skill) : b : Ranktime & -0.13 & -0.13 & -0.20 to -0.06 & -3.65 &  $<$  0.001 \\ 
-Reinforcement learning : c : Ranktime & 0.05 & 0.05 & -0.03 to 0.12 & 1.21 &  =  0.225 \\ 
-Supervised (free choice): c : Ranktime & -0.01 & -0.01 & -0.11 to 0.09 & -0.27 &  =  0.791 \\ 
-Supervised (target skill) : c : Ranktime & -0.06 & -0.06 & -0.13 to 0.01 & -1.78 &  =  0.076 \\ 
-Reinforcement learning : d : Ranktime & -0.09 & -0.09 & -0.17 to -0.02 & -2.51 &  =  0.012 \\ 
-Supervised (free choice) : d : Ranktime & -0.09 & -0.09 & -0.19 to 0.01 & -1.85 &  =  0.065 \\ 
-Supervised (target skill) : d : Ranktime & -0.15 & -0.15 & -0.22 to -0.08 & -4.18 &  $<$  0.001 \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime) \\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
-\end{minipage}
 
 
 
-\clearpage
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_diffgroupfam}
-\caption*{
-{\large Strategy ranking} \\ 
-{\small Estimated difference in difference for each strategy between groups}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$ 0.001 \\ 
-b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
-c & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
-d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
-Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
-a : Supervised (free choice) & -0.15 & -0.15 & -0.46 to 0.16 & -0.96 &  =  0.340 \\ 
-b : Supervised (free choice) & 0.14 & 0.14 & -0.17 to 0.45 & 0.87 &  =  0.385 \\ 
-c : Supervised (free choice) & 0.20 & 0.20 & -0.11 to 0.51 & 1.26 &  =  0.209 \\ 
-d : Supervised (free choice) & -0.19 & -0.19 & -0.50 to 0.13 & -1.17 &  =  0.242 \\ 
-a : Supervised (target skill) & -0.07 & -0.07 & -0.28 to 0.15 & -0.63 &  =  0.531 \\ 
-b : Supervised (target skill) & 0.45 & 0.45 & 0.24 to 0.67 & 4.17 &  $<$  0.001 \\ 
-c : Supervised (target skill) & 0.03 & 0.03 & -0.18 to 0.24 & 0.29 &  =  0.772 \\ 
-d : Supervised (target skill) & -0.42 & -0.42 & -0.63 to -0.20 & -3.83 &  $<$  0.001 \\ 
-b : Ranktime & -0.13 & -0.13 & -0.18 to -0.09 & -5.56 &  $<$  0.001 \\ 
-c : Ranktime & -0.01 & -0.01 & -0.06 to 0.04 & -0.43 &  =  0.665 \\ 
-d : Ranktime & -0.11 & -0.11 & -0.16 to -0.06 & -4.65 &  $<$  0.001 \\ 
-a : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.19 &  =  0.847 \\ 
-b : Supervised (free choice) : Ranktime & 0.03 & 0.03 & -0.05 to 0.12 & 0.73 &  =  0.465 \\ 
-c : Supervised (free choice) : Ranktime & -0.05 & -0.05 & -0.14 to 0.04 & -1.13 &  =  0.259 \\ 
-d : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.21 &  =  0.837 \\ 
-a : Supervised (target skill) : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.00 &  =  0.317 \\ 
-b : Supervised (target skill) : Ranktime & 0.05 & 0.05 & -0.02 to 0.13 & 1.48 &  =  0.140 \\ 
-c : Supervised (target skill) : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.97 &  =  0.049 \\ 
-d : Supervised (target skill) : Ranktime & -0.02 & -0.02 & -0.09 to 0.05 & -0.50 &  =  0.615 \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
-\end{minipage}
 
 
 
-\clearpage
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_strategiesslope}
-\caption*{
-{\large Strategy ranking} \\ 
-{\small Estimated slopes per strategy for each treatment group}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$  0.001 \\ 
-Supervised (free choice) & 0.00 & 0.00 & -0.16 to 0.16 & 0.00 &  =  1.000 \\ 
-Supervised (target skill)  & 0.00 & 0.00 & -0.11 to 0.11 & 0.00 &  =  1.000 \\ 
-b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
-c  & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
-d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
-Supervised (free choice) : b & 0.29 & 0.29 & -0.15 to 0.73 & 1.29 &  =  0.197 \\ 
-Supervised (target skill) : b & 0.52 & 0.52 & 0.22 to 0.82 & 3.39 &  $<$  0.001 \\ 
-Supervised (free choice) : c & 0.35 & 0.35 & -0.09 to 0.79 & 1.56 &  =  0.118 \\ 
-Supervised (target skill)  : c & 0.10 & 0.10 & -0.20 to 0.40 & 0.65 &  =  0.517 \\ 
-Supervised (free choice) : d & -0.03 & -0.03 & -0.47 to 0.41 & -0.15 &  =  0.879 \\ 
-Supervised (target skill)  : d & -0.35 & -0.35 & -0.65 to -0.05 & -2.26 &  =  0.024 \\ 
-Reinforcement learning : a : Ranktime & 0.05 & 0.05 & 0.00 to 0.10 & 1.86 &  =  0.064 \\ 
-Supervised (free choice) : a : Ranktime & 0.06 & 0.06 & -0.01 to 0.13 & 1.61 &  =  0.107 \\ 
-Supervised (target skill) : a : Ranktime & 0.09 & 0.09 & 0.04 to 0.13 & 3.40 &  $<$  0.001 \\ 
-Reinforcement learning : b : Ranktime & -0.10 & -0.10 & -0.15 to -0.05 & -3.73 &  $<$  0.001 \\ 
-Supervised (free choice) : b : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.85 &  =  0.065 \\ 
-Supervised (target skill) : b : Ranktime & -0.04 & -0.04 & -0.09 to 0.00 & -1.77 &  =  0.077 \\ 
-Reinforcement learning : c : Ranktime & 0.09 & 0.09 & 0.04 to 0.15 & 3.57 &  $<$  0.001 \\ 
-Supervised (free choice) : c : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.24 &  =  0.216 \\ 
-Supervised (target skill) : c : Ranktime & 0.02 & 0.02 & -0.03 to 0.07 & 0.89 &  =  0.376 \\ 
-Reinforcement learning : d : Ranktime & -0.04 & -0.04 & -0.10 to 0.01 & -1.70 &  =  0.090 \\ 
-Supervised (free choice) : d : Ranktime & -0.04 & -0.04 & -0.11 to 0.03 & -1.00 &  =  0.317 \\ 
-Supervised (target skill) : d : Ranktime & -0.06 & -0.06 & -0.11 to -0.01 & -2.51 &  =  0.012 \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lm(Rank \textasciitilde{} treatment * strategy/ranktime)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
-\end{minipage}
 
-\clearpage
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}\label{suptable_strategyranking_diffindiff_strategiesslope}
-\caption*{
-{\large Strategy ranking} \\ 
-{\small Estimated difference in difference for each strategy between groups}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 2.50 & 2.50 & 2.44 to 2.56 & 85.64 &  $<$ 0.001 \\ 
-b & -1.45 & -1.45 & -1.61 to -1.29 & -17.58 &  $<$  0.001 \\ 
-c & -0.90 & -0.90 & -1.06 to -0.74 & -10.88 &  $<$  0.001 \\ 
-d & -2.18 & -2.18 & -2.35 to -2.02 & -26.46 &  $<$  0.001 \\ 
-Ranktime & 0.00 & 0.00 & -0.02 to 0.02 & 0.00 &  =  1.000 \\ 
-a : Supervised (free choice) & -0.15 & -0.15 & -0.46 to 0.16 & -0.96 &  =  0.340 \\ 
-b : Supervised (free choice) & 0.14 & 0.14 & -0.17 to 0.45 & 0.87 &  =  0.385 \\ 
-c : Supervised (free choice) & 0.20 & 0.20 & -0.11 to 0.51 & 1.26 &  =  0.209 \\ 
-d : Supervised (free choice) & -0.19 & -0.19 & -0.50 to 0.13 & -1.17 &  =  0.242 \\ 
-a : Supervised (target skill) & -0.07 & -0.07 & -0.28 to 0.15 & -0.63 &  =  0.531 \\ 
-b : Supervised (target skill) & 0.45 & 0.45 & 0.24 to 0.67 & 4.17 &  $<$  0.001 \\ 
-c : Supervised (target skill) & 0.03 & 0.03 & -0.18 to 0.24 & 0.29 &  =  0.772 \\ 
-d : Supervised (target skill) & -0.42 & -0.42 & -0.63 to -0.20 & -3.83 &  $<$  0.001 \\ 
-b : Ranktime & -0.13 & -0.13 & -0.18 to -0.09 & -5.56 &  $<$  0.001 \\ 
-c : Ranktime & -0.01 & -0.01 & -0.06 to 0.04 & -0.43 &  =  0.665 \\ 
-d : Ranktime & -0.11 & -0.11 & -0.16 to -0.06 & -4.65 &  $<$  0.001 \\ 
-a : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.19 &  =  0.847 \\ 
-b : Supervised (free choice) : Ranktime & 0.03 & 0.03 & -0.05 to 0.12 & 0.73 &  =  0.465 \\ 
-c : Supervised (free choice) : Ranktime & -0.05 & -0.05 & -0.14 to 0.04 & -1.13 &  =  0.259 \\ 
-d : Supervised (free choice) : Ranktime & 0.01 & 0.01 & -0.08 to 0.10 & 0.21 &  =  0.837 \\ 
-a : Supervised (target skill) : Ranktime & 0.04 & 0.04 & -0.03 to 0.11 & 1.00 &  =  0.317 \\ 
-b : Supervised (target skill) : Ranktime & 0.05 & 0.05 & -0.02 to 0.13 & 1.48 &  =  0.140 \\ 
-c : Supervised (target skill) : Ranktime & -0.07 & -0.07 & -0.14 to 0.00 & -1.97 &  =  0.049 \\ 
-d : Supervised (target skill) : Ranktime & -0.02 & -0.02 & -0.09 to 0.05 & -0.50 &  =  0.615 \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lm(Rank \textasciitilde{} strategy/treatment * ranktime)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward". 
-\end{minipage}
-\clearpage
-
-\subsubsection{Strategies effect}
-
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}
-\caption*{
-{\large Strategy effect} \\ 
-{\small Estimated difference between strategies during forced exploration}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\ 
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.88 & 16.88 & 16.56 to 17.20 & 147.94 &  $<$  0.001 \\ 
-Supervised (free choice) & 0.06 & 0.06 & -0.21 to 0.32 & 0.42 &  =  0.674 \\ 
-Supervised (target skill) & 0.17 & 0.17 & -0.09 to 0.43 & 1.30 &  =  0.197 \\ 
-Reinforcement learning : b & -0.44 & -0.44 & -0.51 to -0.38 & -12.95 &  $<$  0.001 \\ 
-Supervised (free choice) : b & -0.32 & -0.32 & -0.39 to -0.25 & -9.29 &  $<$  0.001 \\ 
-Supervised (target skill) : b & -0.45 & -0.45 & -0.51 to -0.38 & -13.56 &  $<$  0.001 \\ 
-Reinforcement learning : c & -0.22 & -0.22 & -0.29 to -0.15 & -6.39 &  $<$  0.001 \\ 
-Supervised (free choice) : c & -0.16 & -0.16 & -0.23 to -0.10 & -4.80 &  $<$  0.001 \\ 
-Supervised (target skill) : c & -0.22 & -0.22 & -0.28 to -0.15 & -6.53 &  $<$  0.001 \\ 
-Reinforcement learning : d & -0.44 & -0.44 & -0.51 to -0.38 & -12.87 &  $<$  0.001 \\ 
-Supervised (free choice) : d & -0.37 & -0.37 & -0.44 to -0.30 & -11.10 &  $<$  0.001 \\ 
-Supervised (target skill) : d & -0.45 & -0.45 & -0.52 to -0.39 & -13.65 &  $<$  0.001 \\ 
-sd(Intercept) & 0.52 & 0.52 &  &  &   \\ 
-sd(Intercept) & 0.20 & 0.20 &  &  &  \\ 
-sd(Observation) & 0.19 & 0.19 &  &  &   \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lmer(racingtime \textasciitilde{} treatment / strategy + (1 \textbar{} skigroup / skier)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
-\end{minipage}
-\clearpage
+\subsection{Strategy choice}
 
 
 
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}
-\caption*{
-{\large Strategy effect} \\ 
-{\small Estimated group difference on strategies during forced exploration}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.88 & 16.88 & 16.56 to 17.20 & 147.94 &  $<$  0.001 \\ 
-b & -0.40 & -0.40 & -0.44 to -0.37 & -20.63 &  $<$  0.001 \\ 
-c & -0.20 & -0.20 & -0.24 to -0.16 & -10.22 &  $<$  0.001 \\ 
-d & -0.42 & -0.42 & -0.46 to -0.38 & -21.72 &  $<$  0.001 \\ 
-a : Supervised (free choice) & -0.01 & -0.01 & -0.28 to 0.26 & -0.07 &  =  0.945 \\ 
-b : Supervised (free choice) & 0.12 & 0.12 & -0.15 to 0.39 & 0.87 &  =  0.386 \\ 
-c : Supervised (free choice) & 0.05 & 0.05 & -0.22 to 0.32 & 0.36 &  =  0.716 \\ 
-d : Supervised (free choice) & 0.06 & 0.06 & -0.20 to 0.33 & 0.48 &  =  0.632 \\ 
-a : Supervised (target skill) & 0.17 & 0.17 & -0.09 to 0.44 & 1.28 &  =  0.203 \\ 
-b : Supervised (target skill) & 0.17 & 0.17 & -0.10 to 0.44 & 1.26 &  =  0.209 \\ 
-c : Supervised (target skill) & 0.18 & 0.18 & -0.09 to 0.45 & 1.33 &  =  0.188 \\ 
-d : Supervised (target skill) & 0.16 & 0.16 & -0.11 to 0.43 & 1.21 &  =  0.231 \\ 
-sd(Intercept) & 0.52 & 0.52 &  &  &  &  \\ 
-sd(Intercept) & 0.20 & 0.20 &  &  &  &  \\ 
-sd(Observation) & 0.19 & 0.19 &  &  &  &  \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lmer(racingtime \textasciitilde{}  strategy / treatment + (1 \textbar{} skigroup/skier)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
-\end{minipage}
-\clearpage
 
 
 
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}
-\caption*{
-{\large Strategy effect} \\ 
-{\small Estimated slope difference for strategies between treatment groups}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.80 & 16.80 & 16.48 to 17.12 & 146.23 &  $<$  0.001 \\ 
-b & -0.44 & -0.44 & -0.48 to -0.40 & -20.15 &  $<$  0.001 \\ 
-c & -0.21 & -0.21 & -0.25 to -0.16 & -8.82 &  $<$  0.001 \\ 
-d & -0.45 & -0.45 & -0.50 to -0.41 & -21.04 &  $<$  0.001 \\ 
-Session number & -0.09 & -0.09 & -0.10 to -0.07 & -9.99 &  $<$  0.001 \\ 
-a : Supervised (free choice) & -0.02 & -0.02 & -0.30 to 0.25 & -0.17 &  =  0.866 \\ 
-b : Supervised (free choice) & 0.15 & 0.15 & -0.12 to 0.42 & 1.12 &  =  0.268 \\ 
-c : Supervised (free choice) & 0.05 & 0.05 & -0.23 to 0.32 & 0.33 &  =  0.740 \\ 
-d : Supervised (free choice) & 0.06 & 0.06 & -0.21 to 0.33 & 0.45 &  =  0.653 \\ 
-b : Session number & -0.06 & -0.06 & -0.12 to 0.00 & -1.98 &  =  0.047 \\ 
-c : Session number & -0.09 & -0.09 & -0.16 to -0.03 & -2.78 &  =  0.005 \\ 
-d : Session number & -0.07 & -0.07 & -0.13 to -0.01 & -2.44 &  =  0.015 \\ 
-a : Supervised (free choice) : Session number & -0.08 & -0.08 & -0.19 to 0.03 & -1.40 &  =  0.163 \\ 
-b : Supervised (free choice) : Session number & 0.04 & 0.04 & 0.01 to 0.07 & 2.34 &  =  0.020 \\ 
-c : Supervised (free choice) : Session number & -0.01 & -0.01 & -0.07 to 0.06 & -0.23 &  =  0.819 \\ 
-d : Supervised (free choice) : Session number & 0.00 & 0.00 & -0.03 to 0.03 & 0.20 &  =  0.842 \\ 
-sd(Intercept) & 0.52 & 0.52 &  &  &  & \\ 
-sd(Intercept) & 0.19 & 0.19 &  &  &  & \\ 
-sd(Observation) & 0.19 & 0.19 &  &  &  & \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lmer(racingtime \textasciitilde{} strategy / treatment * session number + (1 \textbar{} skigroup/skier)\\
-Note: “a” = "stand against"; b = "extend"; "c" = "rock skis forward"; d = "extend with rock skis forward".\\
-\end{minipage}
-\clearpage
 
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lrrrrrl}
-\caption*{
-{\large Strategy effect} \\ 
-{\small Estimated improvement across sessions for "extend with rock skis forward" for the treatment groups}
-} \\ 
-\toprule
-Predictors & Estimates & SE & CI & t & p \\
-\midrule\addlinespace[2.5pt]
-(Intercept) & 16.59 & 16.59 & 16.20 to 16.98 & 101.76 &  $<$ 0.001 \\ 
-Supervised (free choice) & 0.08 & 0.08 & -0.18 to 0.35 & 0.64 &  =  0.522 \\ 
-Supervised (target skill) & 0.06 & 0.06 & -0.20 to 0.32 & 0.44 &  =  0.660 \\ 
-Reinforcement learning : Session number & -0.09 & -0.09 & -0.11 to -0.07 & -8.15 &  $<$  0.001 \\ 
-Supervised (free choice) : Session number & -0.10 & -0.10 & -0.11 to -0.08 & -10.01 &  $<$  0.001 \\ 
-Supervised (target skill) : Session number & -0.08 & -0.08 & -0.09 to -0.06 & -9.25 &  $<$  0.001 \\ 
-sd(Intercept) & 0.51 & 0.51 &  &  &  &  \\ 
-sd(Intercept) & 0.27 & 0.27 &  &  &  &  \\ 
-sd(Observation) & 0.18 & 0.18 &  &  &  &  \\ 
-\bottomrule
-\end{longtable}
-\begin{minipage}{\linewidth}
-Formula: lmer(racingtime \textasciitilde{} treatment / session number  + (1  \textbar{} skigroup / skier)\\
-\end{minipage}
+
+\begin{table}[ht]
+\caption{Probability change across sessions}\label{strategychoice_theorybest_change}
+\begin{tabular}{llrrrrrrr}
+  \hline
+ Contrast & Treatment & Estimate & SE & df & CI & z & p \\ 
+  \hline
+  free choice 2 - free choice 1 & rl & 0.02 & 0.06 & Inf & -0.11-0.14 & 0.26 &   0.791 \\ 
+  retention - free choice 1 & rl & 0.07 & 0.07 & Inf & -0.07-0.21 & 0.96 &   0.339 \\ 
+  retention - free choice 2 & rl & 0.05 & 0.07 & Inf & -0.09-0.19 & 0.72 &    0.469 \\ 
+  transfer - free choice 1 & rl & 0.18 & 0.07 & Inf & 0.04-0.32 & 2.58 &    0.010 \\ 
+  transfer - free choice 2 & rl & 0.16 & 0.07 & Inf & 0.03-0.30 & 2.34 &    0.019 \\ 
+  transfer - retention & rl & 0.11 & 0.08 & Inf & -0.04-0.27 & 1.42 &    0.155 \\ 
+  free choice 2 - free choice 1 & slfc & 0.08 & 0.06 & Inf & -0.04-0.21 & 1.32 &    0.188 \\ 
+  retention - free choice 1 & slfc & 0.31 & 0.07 & Inf & 0.18-0.44 & 4.59 &  $<$  0.001 \\ 
+  retention - free choice 2 & slfc & 0.23 & 0.07 & Inf & 0.09-0.36 & 3.31 &  $<$  0.001 \\ 
+  transfer - free choice 1 & slfc & 0.36 & 0.07 & Inf & 0.23-0.50 & 5.33 &  $<$  0.001 \\ 
+  transfer - free choice 2 & slfc & 0.28 & 0.07 & Inf & 0.14-0.42 & 4.02 &  $<$  0.001 \\ 
+  transfer - retention & slfc & 0.05 & 0.06 & Inf & -0.07-0.18 & 0.85 &    0.396 \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: glmer(chosetheorybest treatment * session + (1 $|$ skigroup/skier).}
+\footnotetext{rl = reinforcement learning; slfc = supervised (free choice) learning}
+\end{table}
+
+\newpage
+
+\begin{table}[ht]
+\caption{Predicted probability difference between groups}\label{strategychoice_theorybest_groupdiff}
+\begin{tabular}{llrrrrrrl}
+  \hline
+ Contrast & Session & Estimate & SE & df & CI & z & p \\ 
+  \hline
+rl minus slfc & free choice 1 & 0.01 & 0.13 & Inf & -0.24-0.27 & 0.11 &  0.911 \\ 
+rl minus slfc & free choice 2 & -0.05 & 0.13 & Inf & -0.31-0.20 & -0.39 &   0.693 \\ 
+rl minus slfc & retention & -0.23 & 0.13 & Inf & -0.48-0.03 & -1.75 &  0.079 \\ 
+rl minus slfc & transfer & -0.17 & 0.12 & Inf & -0.40-0.07 & -1.41 &  0.159 \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: glmer(chosetheorybest treatment * session + (1 $|$ skigroup/skier).}
+\footnotetext{rl = reinforcement learning; slfc = supervised (free choice) learning.}
+\end{table}
+
+
+
+
+\begin{table}[h!]
+\caption{Strategy choice: Predicted probability change in probability of choosing the individual skier's estimated best strategy}\label{table_strategychoice_estimatedbest_change}
+\centering
+\begin{tabular}{lllrrrrrrr}
+  \hline
+  Contrast & Treatment & Estimate & SE & df & CI & z & p \\ 
+  \hline
+ free choice 2 - free choice 1 & rl & 0.20 & 0.06 & Inf & 0.09-0.32 & 3.39 &  $<$  0.001 \\ 
+   retention - free choice 1 & rl & 0.13 & 0.06 & Inf & 0.00-0.26 & 2.02 &    0.043 \\ 
+  retention - free choice 2 & rl & -0.07 & 0.06 & Inf & -0.19-0.04 & -1.25 &    0.213 \\ 
+  transfer - free choice 1 & rl & 0.21 & 0.06 & Inf & 0.09-0.34 & 3.30 &  $<$  0.001 \\ 
+  transfer - free choice 2 & rl & 0.01 & 0.05 & Inf & -0.09-0.11 & 0.18 &    0.854 \\ 
+   transfer - retention & rl & 0.08 & 0.06 & Inf & -0.04-0.20 & 1.31 &    0.190 \\ 
+   free choice 2 - free choice 1 & slfc & 0.09 & 0.06 & Inf & -0.03-0.21 & 1.48 &    0.140 \\ 
+   retention - free choice 1 & slfc & 0.21 & 0.07 & Inf & 0.08-0.34 & 3.11 &    0.002 \\ 
+   retention - free choice 2 & slfc & 0.12 & 0.06 & Inf & -0.00-0.24 & 1.88 &    0.060 \\ 
+   transfer - free choice 1 & slfc & 0.23 & 0.07 & Inf & 0.10-0.36 & 3.39 &  $<$  0.001 \\ 
+   transfer - free choice 2 & slfc & 0.14 & 0.06 & Inf & 0.02-0.26 & 2.21 &    0.027 \\ 
+   transfer - retention & slfc & 0.02 & 0.06 & Inf & -0.09-0.13 & 0.35 &    0.727 \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: glmer(choseestimatedbest treatment * session + (1 $|$ skigroup/skier).}
+\footnotetext{rl = reinforcement learning; slfc = supervised (free choice) learning}
+\end{table}
+
+
+\begin{table}[h!]
+\caption{Strategy choice: Predicted probability difference of choosing the individual skier's estimated best strategy at each session}\label{table_strategychoice_estimatedbest_groupdiff}
+\centering
+\begin{tabular}{rllrrrrrrl}
+  \hline
+ Contrast & Session & Estimate & SE & df & CI & z & p \\ 
+  \hline
+ rl minus slfc & block2 & 0.01 & 0.12 & Inf & -0.22-0.24 & 0.12 &    0.904 \\ 
+   rl minus slfc & block3 & 0.13 & 0.10 & Inf & -0.06-0.32 & 1.30 &    0.194 \\ 
+   rl minus slfc & retention & -0.06 & 0.10 & Inf & -0.26-0.14 & -0.61 &    0.544 \\ 
+  rl minus slfc & transfer & 0.00 & 0.09 & Inf & -0.17-0.17 & 0.00 &    0.999 \\ 
+   \hline
+\end{tabular}
+\footnotetext{Formula: glmer(choseestimatedbest treatment * session + (1 $|$ skigroup/skier).}
+\footnotetext{rl = reinforcement learning; slfc = supervised (free choice) learning}
+\end{table}
+
+
+
+
+
 
 \section{Supplementary discussion}\label{supdiscussion}
 To convert race time to FIS World Ranking, we assumed that each second corresponded to a 7-point FIS. We could then multiply by 0.12 * 7 to find the difference in FIS points. Then, we used the median rank in our sample and calculated what this difference corresponded to in the World Ranking. We performed this analysis for both females and men. Due to confidentiality, we do not want to say which FIS list we used for this conversion. If the reader thinks 7 points is too small or large, then we welcome the reader to change this number up or down. We only used this conversion to help readers evaluating the effect. 
