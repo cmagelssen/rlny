@@ -24,8 +24,8 @@
      inkscape:document-units="pt"
      showgrid="false"
      inkscape:zoom="2.8284271"
-     inkscape:cx="610.76348"
-     inkscape:cy="73.185552"
+     inkscape:cx="240.23953"
+     inkscape:cy="178.54446"
      inkscape:window-width="5120"
      inkscape:window-height="1369"
      inkscape:window-x="-8"
@@ -34,6 +34,18 @@
      inkscape:current-layer="svg18509" />
   <defs
      id="defs18393">
+    <rect
+       x="65.500001"
+       y="364.5"
+       width="130.5"
+       height="15.125"
+       id="rect42419" />
+    <rect
+       x="154.85639"
+       y="29.344932"
+       width="145.664"
+       height="32.526912"
+       id="rect42389" />
     <marker
        style="overflow:visible"
        id="marker20408"
@@ -602,13 +614,6 @@
      style="fill:#ffffff;stroke:none;stroke-width:1.07"
      id="rect18485"
      clip-path="url(#clipPath20575)" />
-  <text
-     x="91.519997"
-     y="269.64001"
-     style="font-size:6px;font-family:Arial"
-     textLength="27.09"
-     lengthAdjust="spacingAndGlyphs"
-     id="text18487">Treatment</text>
   <rect
      x="121.61"
      y="262.48001"
@@ -670,20 +675,13 @@
      lengthAdjust="spacingAndGlyphs"
      id="text18503">(free choice)</text>
   <text
-     x="28.440001"
-     y="10.49"
-     style="font-size:7px;font-family:Arial"
-     textLength="73.790001"
-     lengthAdjust="spacingAndGlyphs"
-     id="text18505">Win-Stay, Lose-Switch</text>
-  <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,37.045207,9.9006431)"
      id="text18630"
      style="font-size:8px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect18632);display:inline;fill:#000000;stroke:#000000;stroke-opacity:0"><tspan
        x="53.605469"
        y="277.57713"
-       id="tspan21989">Better</tspan></text>
+       id="tspan42576">Better</tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,171.5596,9.5544572)"
@@ -691,10 +689,26 @@
      style="font-size:8px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect18632-8);display:inline;fill:#000000;stroke:#000000;stroke-opacity:0"><tspan
        x="53.605469"
        y="277.57713"
-       id="tspan21991">Worse</tspan></text>
+       id="tspan42578">Worse</tspan></text>
   <path
      style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.992347;marker-start:url(#TriangleStart);marker-end:url(#marker20408)"
      d="M 82.141211,206.86123 H 224.28879"
      id="path20376"
      sodipodi:nodetypes="cc" />
+  <text
+     xml:space="preserve"
+     transform="matrix(0.75,0,0,0.75,-87.696834,-17.824558)"
+     id="text42387"
+     style="font-size:9.33333px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect42389);fill:#000000;stroke-width:0.573333"><tspan
+       x="154.85547"
+       y="37.752742"
+       id="tspan42580">Win-Stay, Lose-Shift</tspan></text>
+  <text
+     xml:space="preserve"
+     transform="matrix(0.75,0,0,0.75,29.316101,-9.7357034)"
+     id="text42417"
+     style="font-size:8px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect42419);fill:#000000;stroke-width:0.573333"><tspan
+       x="65.5"
+       y="371.70604"
+       id="tspan42582">Learning group</tspan></text>
 </svg>
