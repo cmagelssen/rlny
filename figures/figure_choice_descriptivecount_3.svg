@@ -23,9 +23,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
      showgrid="false"
-     inkscape:zoom="2.6590428"
-     inkscape:cx="307.06539"
-     inkscape:cy="-212.1064"
+     inkscape:zoom="1.3295214"
+     inkscape:cx="246.32924"
+     inkscape:cy="95.523096"
      inkscape:window-width="5120"
      inkscape:window-height="1369"
      inkscape:window-x="-8"
@@ -34,6 +34,18 @@
      inkscape:current-layer="svg7480" />
   <defs
      id="defs7067">
+    <rect
+       x="77.384265"
+       y="323.89703"
+       width="70.470207"
+       height="17.285145"
+       id="rect37847" />
+    <rect
+       x="318.3126"
+       y="329.48146"
+       width="89.61683"
+       height="14.094041"
+       id="rect37478" />
     <style
        type="text/css"
        id="style7065"><![CDATA[
@@ -2439,9 +2451,9 @@
      style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-8-9-7-0);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
        x="75.169266"
        y="56.774564"
-       id="tspan14948"><tspan
+       id="tspan38534"><tspan
          style="fill:#000000;stroke:none"
-         id="tspan14946">Coach</tspan></tspan></text>
+         id="tspan38532">Coach</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,230.08501,5.6331661)"
@@ -2449,9 +2461,9 @@
      style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-4-2-7-5-1);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
        x="77.210283"
        y="56.774564"
-       id="tspan14952"><tspan
+       id="tspan38538"><tspan
          style="fill:#000000;stroke:none"
-         id="tspan14950">Skier</tspan></tspan></text>
+         id="tspan38536">Skier</tspan></tspan></text>
   <polygon
      points="296.89,160.04 273.27,160.04 249.65,160.04 273.27,160.04 296.89,160.04 320.51,160.04 "
      style="fill:#8fc344;fill-opacity:0.075;stroke:none;stroke-width:0;stroke-linecap:butt"
@@ -2952,14 +2964,6 @@
      id="rect7442"
      clip-path="url(#clipPath7728)"
      transform="translate(-64.41191)" />
-  <text
-     x="147.13"
-     y="237.67"
-     style="font-size:6px;font-family:Arial"
-     textLength="27.09"
-     lengthAdjust="spacingAndGlyphs"
-     id="text7444"
-     transform="translate(-64.41191)">Treatment</text>
   <rect
      x="177.22"
      y="226.88"
@@ -3045,14 +3049,6 @@
      transform="translate(-64.41191)">(free choice)</text>
   <text
      x="304.26001"
-     y="234.61"
-     style="font-size:5px;font-family:Arial"
-     textLength="44.16"
-     lengthAdjust="spacingAndGlyphs"
-     id="text7472"
-     transform="translate(-64.41191)">Supervised learning</text>
-  <text
-     x="304.26001"
      y="240.00999"
      style="font-size:5px;font-family:Arial"
      textLength="25.82"
@@ -3080,9 +3076,9 @@
        style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-8-9-7);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
          x="77.210283"
          y="56.774564"
-         id="tspan14956"><tspan
+         id="tspan38542"><tspan
            style="fill:#000000;stroke:none"
-           id="tspan14954">Skier</tspan></tspan></text>
+           id="tspan38540">Skier</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.75,0,0,0.75,20.971432,5.6331661)"
@@ -3090,9 +3086,9 @@
        style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-4-2-7-5);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
          x="77.210283"
          y="56.774564"
-         id="tspan14960"><tspan
+         id="tspan38546"><tspan
            style="fill:#000000;stroke:none"
-           id="tspan14958">Skier</tspan></tspan></text>
+           id="tspan38544">Skier</tspan></tspan></text>
   </g>
   <text
      xml:space="preserve"
@@ -3101,9 +3097,9 @@
      style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-8-9-7-8);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
        x="75.169266"
        y="56.774564"
-       id="tspan14964"><tspan
+       id="tspan38550"><tspan
          style="fill:#000000;stroke:none"
-         id="tspan14962">Coach</tspan></tspan></text>
+         id="tspan38548">Coach</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,125.53433,5.6331661)"
@@ -3111,9 +3107,9 @@
      style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;white-space:pre;shape-inside:url(#rect14099-4-2-7-5-4);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#6f8a91;stroke-width:0.573333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.573333, 1.14667"><tspan
        x="77.210283"
        y="56.774564"
-       id="tspan14968"><tspan
+       id="tspan38554"><tspan
          style="fill:#000000;stroke:none"
-         id="tspan14966">Skier</tspan></tspan></text>
+         id="tspan38552">Skier</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,258.13305,13.304775)"
@@ -3121,9 +3117,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14972"><tspan
+       id="tspan38558"><tspan
          style="stroke:none"
-         id="tspan14970">Stand against</tspan></tspan></text>
+         id="tspan38556">Stand against</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,26.66269,14.841283)"
@@ -3131,9 +3127,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-3);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14976"><tspan
+       id="tspan38562"><tspan
          style="stroke:none"
-         id="tspan14974">Stand against</tspan></tspan></text>
+         id="tspan38560">Stand against</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,131.34269,15.456706)"
@@ -3141,9 +3137,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-3-6);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14980"><tspan
+       id="tspan38566"><tspan
          style="stroke:none"
-         id="tspan14978">Stand against</tspan></tspan></text>
+         id="tspan38564">Stand against</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,257.96459,6.6845004)"
@@ -3151,9 +3147,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14984"><tspan
+       id="tspan38570"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan14982">Rock skis forward</tspan></tspan></text>
+         id="tspan38568">Rock skis forward</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,22.303557,-2.905837)"
@@ -3161,9 +3157,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-9);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14988"><tspan
+       id="tspan38574"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan14986">Rock skis forward</tspan></tspan></text>
+         id="tspan38572">Rock skis forward</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,126.98356,-2.7840127)"
@@ -3171,9 +3167,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-9-7);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14992"><tspan
+       id="tspan38578"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan14990">Rock skis forward</tspan></tspan></text>
+         id="tspan38576">Rock skis forward</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,34.245701,-19.983549)"
@@ -3181,9 +3177,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan14996"><tspan
+       id="tspan38582"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan14994">Extend</tspan></tspan></text>
+         id="tspan38580">Extend</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,138.9257,-27.513329)"
@@ -3191,9 +3187,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan15000"><tspan
+       id="tspan38586"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan14998">Extend</tspan></tspan></text>
+         id="tspan38584">Extend</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,257.96215,0.0031907)"
@@ -3201,9 +3197,9 @@
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-0);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
        x="92.138672"
        y="204.57339"
-       id="tspan15004"><tspan
+       id="tspan38590"><tspan
          style="fill:#4d4d4d;stroke:none"
-         id="tspan15002">Extend</tspan></tspan></text>
+         id="tspan38588">Extend</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,217.67944,-70.008495)"
@@ -3213,15 +3209,15 @@
      y="0"><tspan
        x="118.97428"
        y="204.57339"
-       id="tspan15008"><tspan
+       id="tspan38594"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15006">Extend with 
+         id="tspan38592">Extend with 
 </tspan></tspan><tspan
        x="112.12694"
        y="212.90674"
-       id="tspan15012"><tspan
+       id="tspan38598"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15010">rock skis forward</tspan></tspan></text>
+         id="tspan38596">rock skis forward</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,8.3194353,-61.998241)"
@@ -3231,15 +3227,15 @@
      y="0"><tspan
        x="118.97428"
        y="204.57339"
-       id="tspan15016"><tspan
+       id="tspan38602"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15014">Extend with 
+         id="tspan38600">Extend with 
 </tspan></tspan><tspan
        x="112.12694"
        y="212.90674"
-       id="tspan15020"><tspan
+       id="tspan38606"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15018">rock skis forward</tspan></tspan></text>
+         id="tspan38604">rock skis forward</tspan></tspan></text>
   <text
      xml:space="preserve"
      transform="matrix(0.75,0,0,0.75,112.99944,-75.819005)"
@@ -3249,13 +3245,29 @@
      y="0"><tspan
        x="118.97428"
        y="204.57339"
-       id="tspan15024"><tspan
+       id="tspan38610"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15022">Extend with 
+         id="tspan38608">Extend with 
 </tspan></tspan><tspan
        x="112.12694"
        y="212.90674"
-       id="tspan15028"><tspan
+       id="tspan38614"><tspan
          style="text-align:center;text-anchor:middle;stroke:none"
-         id="tspan15026">rock skis forward</tspan></tspan></text>
+         id="tspan38612">rock skis forward</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     transform="matrix(0.75,0,0,0.75,1.1135501,-17.004123)"
+     id="text37476"
+     style="font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect37478);fill:#000000;stroke-width:0.573333"><tspan
+       x="318.3125"
+       y="335.4855"
+       id="tspan38616">Supervised</tspan></text>
+  <text
+     xml:space="preserve"
+     transform="matrix(0.75,0,0,0.75,11.600625,-11.253083)"
+     id="text37845"
+     style="font-size:8px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect37847);fill:#000000;stroke-width:0.573333"><tspan
+       x="77.384766"
+       y="331.10252"
+       id="tspan38618">Learning group</tspan></text>
 </svg>
