@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.829812"
-     inkscape:cx="297.02505"
-     inkscape:cy="284.1822"
+     inkscape:zoom="3.659624"
+     inkscape:cx="-54.513797"
+     inkscape:cy="498.13861"
      inkscape:window-width="5120"
      inkscape:window-height="1369"
      inkscape:window-x="-8"
@@ -35,6 +35,12 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs23615">
+    <rect
+       x="77.876853"
+       y="529.83585"
+       width="70.225794"
+       height="21.313665"
+       id="rect52728" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath16859">
@@ -4149,9 +4155,9 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3-3-9-6);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
            x="92.138672"
            y="204.57339"
-           id="tspan29802"><tspan
+           id="tspan54085"><tspan
              style="fill:#4d4d4d;stroke:none"
-             id="tspan29800">Skier's choice</tspan></tspan></text>
+             id="tspan54083">Skier's choice</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.75,0,0,0.75,90.211519,-107.41545)"
@@ -4159,9 +4165,9 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3-5-4-6);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
            x="92.138672"
            y="204.57339"
-           id="tspan29806"><tspan
+           id="tspan54089"><tspan
              style="fill:#4d4d4d;stroke:none"
-             id="tspan29804">Coach's choice</tspan></tspan></text>
+             id="tspan54087">Coach's choice</tspan></tspan></text>
     </g>
     <polygon
        points="188.35,51.67 204.35,48.61 220.36,45.06 220.36,78.77 204.35,71.13 188.35,78.45 172.34,74.9 156.33,97.1 140.33,94.23 140.33,41.65 156.33,41.66 172.34,50.89 "
@@ -5479,9 +5485,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29810"><tspan
+         id="tspan54093"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29808">Skier's choice</tspan></tspan></text>
+           id="tspan54091">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,50.287043,42.697159)"
@@ -5489,9 +5495,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29814"><tspan
+         id="tspan54097"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29812">Coach's choice</tspan></tspan></text>
+           id="tspan54095">Coach's choice</tspan></tspan></text>
     <path
        style="fill:#000000;stroke:#6f8a91;stroke-width:0.135852;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:0.135852, 0.271705"
        d="M 124.4213,134.08543 V 94.866141"
@@ -5503,9 +5509,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3-3);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29818"><tspan
+         id="tspan54101"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29816">Skier's choice</tspan></tspan></text>
+           id="tspan54099">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,87.083639,42.697159)"
@@ -5513,9 +5519,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3-5);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29822"><tspan
+         id="tspan54105"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29820">Coach's choice</tspan></tspan></text>
+           id="tspan54103">Coach's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,101.12248,-26.193281)"
@@ -5523,9 +5529,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3-3-9);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29826"><tspan
+         id="tspan54109"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29824">Skier's choice</tspan></tspan></text>
+           id="tspan54107">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,87.116158,-26.193281)"
@@ -5533,9 +5539,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3-5-4);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29830"><tspan
+         id="tspan54113"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29828">Coach's choice</tspan></tspan></text>
+           id="tspan54111">Coach's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,27.490662,42.167993)"
@@ -5543,9 +5549,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3-2);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29834"><tspan
+         id="tspan54117"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29832">Skier's choice</tspan></tspan></text>
+           id="tspan54115">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,14.564371,42.167993)"
@@ -5553,9 +5559,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3-1);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29838"><tspan
+         id="tspan54121"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29836">Skier's choice</tspan></tspan></text>
+           id="tspan54119">Skier's choice</tspan></tspan></text>
     <polyline
        points="156.33,312.66 172.34,319.06 188.35,318.64 204.35,322.17 220.36,322.46 "
        style="fill:none;stroke:#1c8eb3;stroke-width:1.07;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10"
@@ -6270,14 +6276,6 @@
          id="rect1907"
          clip-path="url(#clipPath2256)"
          transform="translate(-58.5)" />
-      <text
-         x="147.28999"
-         y="436.09"
-         style="font-size:6px;font-family:Arial;white-space:pre"
-         textLength="27.09"
-         lengthAdjust="spacingAndGlyphs"
-         id="text1909"
-         transform="translate(-58.5)">Treatment</text>
       <rect
          x="176.89999"
          y="425.29999"
@@ -6401,9 +6399,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29842"><tspan
+         id="tspan54125"><tspan
            style="stroke:none"
-           id="tspan29840">Stand against</tspan></tspan></text>
+           id="tspan54123">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,51.879936,48.236804)"
@@ -6411,9 +6409,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-4);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29846"><tspan
+         id="tspan54129"><tspan
            style="stroke:none"
-           id="tspan29844">Stand against</tspan></tspan></text>
+           id="tspan54127">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,80.650359,47.108035)"
@@ -6421,9 +6419,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-4-4);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29850"><tspan
+         id="tspan54133"><tspan
            style="stroke:none"
-           id="tspan29848">Stand against</tspan></tspan></text>
+           id="tspan54131">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,25.86184,53.865091)"
@@ -6433,15 +6431,15 @@
        y="0"><tspan
          x="111.17415"
          y="204.57339"
-         id="tspan29854"><tspan
+         id="tspan54137"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29852">Rock skis 
+           id="tspan54135">Rock skis 
 </tspan></tspan><tspan
          x="115.24641"
          y="212.90674"
-         id="tspan29858"><tspan
+         id="tspan54141"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29856">forward</tspan></tspan></text>
+           id="tspan54139">forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,67.459067,57.824542)"
@@ -6451,15 +6449,15 @@
        y="0"><tspan
          x="111.17415"
          y="204.57339"
-         id="tspan29862"><tspan
+         id="tspan54145"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29860">Rock skis 
+           id="tspan54143">Rock skis 
 </tspan></tspan><tspan
          x="115.24641"
          y="212.90674"
-         id="tspan29866"><tspan
+         id="tspan54149"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29864">forward</tspan></tspan></text>
+           id="tspan54147">forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,103.78012,61.769211)"
@@ -6469,15 +6467,15 @@
        y="0"><tspan
          x="112.10025"
          y="204.57339"
-         id="tspan29870"><tspan
+         id="tspan54153"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29868">Rock skis
+           id="tspan54151">Rock skis
 </tspan></tspan><tspan
          x="114.32031"
          y="212.90674"
-         id="tspan29874"><tspan
+         id="tspan54157"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29872"> forward</tspan></tspan></text>
+           id="tspan54155"> forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,22.842903,68.924218)"
@@ -6487,15 +6485,15 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29878"><tspan
+         id="tspan54161"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29876">Extend with 
+           id="tspan54159">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29882"><tspan
+         id="tspan54165"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29880">rock skis forward</tspan></tspan></text>
+           id="tspan54163">rock skis forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,59.785791,69.694766)"
@@ -6505,15 +6503,15 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29886"><tspan
+         id="tspan54169"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29884">Extend with 
+           id="tspan54167">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29890"><tspan
+         id="tspan54173"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29888">rock skis forward</tspan></tspan></text>
+           id="tspan54171">rock skis forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,96.764104,68.967331)"
@@ -6523,15 +6521,15 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29894"><tspan
+         id="tspan54177"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29892">Extend with 
+           id="tspan54175">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29898"><tspan
+         id="tspan54181"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29896">rock skis forward</tspan></tspan></text>
+           id="tspan54179">rock skis forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,22.830415,60.62166)"
@@ -6541,9 +6539,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29902"><tspan
+         id="tspan54185"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29900">Extend</tspan></tspan></text>
+           id="tspan54183">Extend</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,64.427641,64.567564)"
@@ -6553,9 +6551,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29906"><tspan
+         id="tspan54189"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29904">Extend</tspan></tspan></text>
+           id="tspan54187">Extend</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,96.751616,50.82487)"
@@ -6565,9 +6563,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29910"><tspan
+         id="tspan54193"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29908">Extend</tspan></tspan></text>
+           id="tspan54191">Extend</tspan></tspan></text>
     <path
        style="fill:#000000;stroke:#6f8a91;stroke-width:0.135852;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:0.135852, 0.271705"
        d="M 50.719286,65.19501 V 25.975702"
@@ -6579,9 +6577,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-3-3-9-6-5);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29914"><tspan
+         id="tspan54197"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29912">Skier's choice</tspan></tspan></text>
+           id="tspan54195">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,14.46166,-26.193281)"
@@ -6589,9 +6587,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-5-3-7-5-9-8-2-3-5-4-6-9);display:inline;fill:#00323e;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29918"><tspan
+         id="tspan54201"><tspan
            style="fill:#4d4d4d;stroke:none"
-           id="tspan29916">Skier's choice</tspan></tspan></text>
+           id="tspan54199">Skier's choice</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,29.313996,-18.865631)"
@@ -6599,9 +6597,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-3);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29922"><tspan
+         id="tspan54205"><tspan
            style="stroke:none"
-           id="tspan29920">Stand against</tspan></tspan></text>
+           id="tspan54203">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,66.256885,-18.106925)"
@@ -6609,9 +6607,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-3-8);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29926"><tspan
+         id="tspan54209"><tspan
            style="stroke:none"
-           id="tspan29924">Stand against</tspan></tspan></text>
+           id="tspan54207">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,103.19625,-19.286199)"
@@ -6619,9 +6617,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect2333-3-8-7);display:inline;fill:#4d4d4d;fill-opacity:1;stroke:#000000;stroke-width:0.573333"><tspan
          x="92.138672"
          y="204.57339"
-         id="tspan29930"><tspan
+         id="tspan54213"><tspan
            style="stroke:none"
-           id="tspan29928">Stand against</tspan></tspan></text>
+           id="tspan54211">Stand against</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,25.861841,-11.100773)"
@@ -6631,15 +6629,15 @@
        y="0"><tspan
          x="111.17415"
          y="204.57339"
-         id="tspan29934"><tspan
+         id="tspan54217"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29932">Rock skis 
+           id="tspan54215">Rock skis 
 </tspan></tspan><tspan
          x="115.24641"
          y="212.90674"
-         id="tspan29938"><tspan
+         id="tspan54221"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29936">forward</tspan></tspan></text>
+           id="tspan54219">forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,62.804729,-11.249956)"
@@ -6649,15 +6647,15 @@
        y="0"><tspan
          x="111.17415"
          y="204.57339"
-         id="tspan29942"><tspan
+         id="tspan54225"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29940">Rock skis 
+           id="tspan54223">Rock skis 
 </tspan></tspan><tspan
          x="115.24641"
          y="212.90674"
-         id="tspan29946"><tspan
+         id="tspan54229"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29944">forward</tspan></tspan></text>
+           id="tspan54227">forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,99.744092,-15.706147)"
@@ -6667,15 +6665,15 @@
        y="0"><tspan
          x="111.17415"
          y="204.57339"
-         id="tspan29950"><tspan
+         id="tspan54233"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29948">Rock skis 
+           id="tspan54231">Rock skis 
 </tspan></tspan><tspan
          x="115.24641"
          y="212.90674"
-         id="tspan29954"><tspan
+         id="tspan54237"><tspan
            style="text-align:center;text-anchor:middle;fill:#4d4d4d;stroke:none"
-           id="tspan29952">forward</tspan></tspan></text>
+           id="tspan54235">forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,22.830415,-3.388626)"
@@ -6685,9 +6683,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29958"><tspan
+         id="tspan54241"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29956">Extend</tspan></tspan></text>
+           id="tspan54239">Extend</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,59.773302,-5.879339)"
@@ -6697,9 +6695,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29962"><tspan
+         id="tspan54245"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29960">Extend</tspan></tspan></text>
+           id="tspan54243">Extend</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,96.712666,-3.058968)"
@@ -6709,9 +6707,9 @@
        y="0"><tspan
          x="126.75423"
          y="204.57339"
-         id="tspan29966"><tspan
+         id="tspan54249"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29964">Extend</tspan></tspan></text>
+           id="tspan54247">Extend</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,22.842903,4.156649)"
@@ -6721,15 +6719,15 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29970"><tspan
+         id="tspan54253"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29968">Extend with 
+           id="tspan54251">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29974"><tspan
+         id="tspan54257"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29972">rock skis forward</tspan></tspan></text>
+           id="tspan54255">rock skis forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,59.785791,5.653524)"
@@ -6739,15 +6737,15 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29978"><tspan
+         id="tspan54261"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29976">Extend with 
+           id="tspan54259">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29982"><tspan
+         id="tspan54265"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29980">rock skis forward</tspan></tspan></text>
+           id="tspan54263">rock skis forward</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,96.725154,7.818511)"
@@ -6757,14 +6755,22 @@
        y="0"><tspan
          x="118.97428"
          y="204.57339"
-         id="tspan29986"><tspan
+         id="tspan54269"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29984">Extend with 
+           id="tspan54267">Extend with 
 </tspan></tspan><tspan
          x="112.12694"
          y="212.90674"
-         id="tspan29990"><tspan
+         id="tspan54273"><tspan
            style="text-align:center;text-anchor:middle;stroke:none"
-           id="tspan29988">rock skis forward</tspan></tspan></text>
+           id="tspan54271">rock skis forward</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,22.370907,9.8714553)"
+       id="text52726"
+       style="font-size:8px;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect52728);fill:#000000;stroke-width:0.573333"><tspan
+         x="77.876953"
+         y="537.04197"
+         id="tspan54275">Learning group</tspan></text>
   </g>
 </svg>
